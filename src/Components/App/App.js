@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import MainForm from '../Form/MainForm';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Boilerplate</h1>
+        <MainForm />
       </div>
     );
   }
