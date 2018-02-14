@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import MainForm from '../Form/MainForm';
+import MainForm from '../MainForm/MainForm';
 //import { connect } from 'react-redux';
 //import { getAllIngredients } from '../../Helpers/apiCalls';
 
