@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './MainForm.css';
 import { connect } from 'react-redux';
 //import * as actions from '../../Actions';
-import { setIngredients } from '../../Actions/index'
+import { setIngredients } from '../../Actions/index';
 import { searchForIngredient } from '../../Helpers/apiCalls';
 
 class MainForm extends Component {
@@ -18,11 +18,11 @@ class MainForm extends Component {
     this.setState({ [name]: value });
   }
 
-  submitForm(event) {
-    const { setIngredients } = this.props;
+  async submitForm(event) {
     event.preventDefault();
+    const { setIngredients } = this.props;
     const { userInput } = this.state;
-    const searchReasult = searchForIngredient(userInput);
+    const searchReasult = await searchForIngredient(userInput);
     setIngredients(searchReasult);
   }
 
@@ -44,12 +44,11 @@ class MainForm extends Component {
 }
 
 // export const mapStateToProps = state => ({
-  
+
 // });
 
 export const mapDispatchToProps = dispatch => ({
-  setIngredients : ingredient =>
-    dispatch(searchForIngredient(ingredient))
+  setIngredients: ingredient => dispatch(setIngredients(ingredient))
 });
 
 export default connect(null, mapDispatchToProps)(MainForm);
