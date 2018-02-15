@@ -4,7 +4,7 @@ const ingredientsReducer = (state = [], action) => {
   switch(action.type) {
     case 'SET_INGREDIENT':
       console.log('SET_INGREDIENT', action);
-      return state  
+      return {ingredients: [...state, action.ingredients]}  
     default:
       return state
   }
