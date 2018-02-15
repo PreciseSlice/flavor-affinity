@@ -9,14 +9,7 @@
 //     return { type: 'SET_INGREDIENT', SET_INGREDIENT: searchResult };
 // };
 
-export const  setIngredients = ingredients => {
-  type: 'SET_INGREDIENT', 
+export const setIngredients = ingredients => ({
+  type: 'SET_INGREDIENT',
   ingredients
-}
-
-// export const  setIngredients = ingredients => {
-//   return dispatch => {
-//     type: 'SET_INGREDIENTS', 
-//     ingredients
-//   }
-// }
+});
