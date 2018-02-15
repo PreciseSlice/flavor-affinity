@@ -19,6 +19,8 @@ export const fetchFromApi = async url => {
 export const getAllIngredients = async () => {
   // does this need the try catch? 
   try {
+    // if this is allways returning the same thing, grab it and store it in the app
+    // on load put all the data into the store and set the trie  
     const allIngredients = await fetchFromApi(
       'https://api.foodpairing.com/ingredients/?limit=500'
     )
@@ -27,3 +29,15 @@ export const getAllIngredients = async () => {
     return alert(error)
   }
 }
+
+export const searchForIngredient = async ingredient => {
+  const searchResult = await fetchFromApi(
+    `https://api.foodpairing.com/ingredients/?q=${ingredient}`
+  );
+  console.log(searchResult);
+
+  return searchResult;
+};
+
+// going to need id after search to get pairing 
+// need to handle multiple results being returned
