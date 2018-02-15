@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import MainForm from '../MainForm/MainForm';
-//import { connect } from 'react-redux';
-//import { getAllIngredients } from '../../Helpers/apiCalls';
 
 class App extends Component {
-  // onload grab all ingredients and send to store?
-  // componentDidMount = async () => {};
 
   render() {
     return (
