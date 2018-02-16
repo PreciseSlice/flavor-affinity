@@ -3,8 +3,40 @@ import './App.css';
 import MainForm from '../MainForm/MainForm';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      errorInfo: null
+    };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({
+      error: error,
+      errorInfo: errorInfo
+    });
+  }
+
+  clearError() {
+    this.setState({
+      error: null,
+      errorInfo: null
+    });
+  }
 
   render() {
+    if (this.state.error) {
+      return (
+        <div>
+          <h2>{'Oh-no! Something went wrong'}</h2>
+          <p className="">{this.state.error && this.state.error.toString()}</p>
+          <div>{'Component Stack Error Details: '}</div>
+          <p className="">{this.state.errorInfo.componentStack}</p>
+          <button onClick={() => this.clearError()} />
+        </div>
+      );
+    }
     return (
       <div className="App">
         <MainForm />
