@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainForm Exist and matches snapshot 1`] = `
+<div
+  className="form-container"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      name="userInput"
+      onChange={[Function]}
+      placeholder="enter ingredient"
+      type="text"
+    />
+    <button
+      onClick={[Function]}
+    >
+      search
+    </button>
+  </form>
+</div>
+`;
