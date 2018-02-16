@@ -9,26 +9,12 @@ export const fetchFromApi = async url => {
     if (initialFetch.status <= 200) {
       return await initialFetch.json();
     } else {
-      throw new Error('Bad status code');
+      throw new Error('Status code > 200');
     }
   } catch (error) {
-    return alert(error);
+    throw new Error(error);
   }
 };
-
-export const getAllIngredients = async () => {
-  // does this need the try catch? 
-  try {
-    // if this is allways returning the same thing, grab it and store it in the app
-    // on load put all the data into the store and set the trie  
-    const allIngredients = await fetchFromApi(
-      'https://api.foodpairing.com/ingredients/?limit=500'
-    )
-    return allIngredients
-  } catch (error) {
-    return alert(error)
-  }
-}
 
 export const searchForIngredient = async ingredient => {
   const searchResult = await fetchFromApi(
@@ -39,5 +25,13 @@ export const searchForIngredient = async ingredient => {
   return searchResult;
 };
 
-// going to need id after search to get pairing 
-// need to handle multiple results being returned
+// going to need id after search to get pairing
+
+export const getAllIngredients = async () => {
+  const allIngredients = await fetchFromApi(
+    'https://api.foodpairing.com/ingredients/?limit=500'
+  );
+  console.log(allIngredients);
+
+  return allIngredients;
+};

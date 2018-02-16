@@ -1,14 +1,18 @@
 /* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { MainForm, mapDispatchToProps } from './MainForm';
 import { shallow } from 'enzyme';
+import { createStore } from 'redux';
+import rootReducer from '../../Reducers/index';
 
-describe('App', () => {
+let store = createStore(rootReducer);
+
+describe('MainForm', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow( <MainForm />);
   });
 
   it('Exist and matches snapshot', () => {

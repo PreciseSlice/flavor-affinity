@@ -16,3 +16,9 @@ input {
 
 :-ms-input-placeholder {
   text-align: center; }
+
+button {
+  border-radius: 30px;
+  height: 33px;
+  width: 90px;
+  margin-left: 10px; }
