@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './MainForm.css';
 import { connect } from 'react-redux';
 //import * as actions from '../../Actions';
 import { setIngredients } from '../../Actions/index';
 import { searchForIngredient } from '../../Helpers/apiCalls';
+import './MainForm.css';
 
-class MainForm extends Component {
+export class MainForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +36,7 @@ class MainForm extends Component {
             onChange={event => this.handleChange(event)}
             placeholder="enter ingredient"
           />
-          {/* <buttton>icon</buttton> */}
+          <button onClick={event => this.submitForm(event)}>search</button>
         </form>
       </div>
     );
