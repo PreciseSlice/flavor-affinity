@@ -19,7 +19,7 @@
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "build-js": "react-scripts build",
     "eject": "react-scripts eject",
-    "eslint": "./node_modules/eslint/bin/eslint.js ./src/*/*/*.js",
+    "eslint": "./node_modules/eslint/bin/eslint.js ./src/*/*/*.js ./src/*/*.js ./src/*.js",
     "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
