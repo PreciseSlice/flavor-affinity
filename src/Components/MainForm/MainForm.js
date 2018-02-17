@@ -15,6 +15,7 @@ export class MainForm extends Component {
 
   handleChange(event) {
     const { name, value } = event.target;
+    
     this.setState({ [name]: value });
   }
 
