@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
-import MainForm from '../MainForm/MainForm';
+import { MainForm } from '../MainForm/MainForm';
+import { getAllIngredients } from '../../Helpers/apiCalls';
+import { setIngredients } from '../../Actions';
+//import * as actions from '../../Actions';
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       errorInfo: null
     };
+  }
+
+  async componentDidMount() {
+    const { setIngredients } = this.props;
+    const allIngredients = await getAllIngredients();
+    setIngredients(allIngredients);
   }
 
   componentDidCatch(error, errorInfo) {
@@ -45,4 +55,12 @@ class App extends Component {
   }
 }
 
-export default App;
+// export const mapStateToProps = state => ({
+
+// });
+
+export const mapDispatchToProps = dispatch => ({
+  setIngredients: ingredient => dispatch(setIngredients(ingredient))
+});
+
+export default connect(null, mapDispatchToProps)(App);
