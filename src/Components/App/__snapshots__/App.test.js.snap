@@ -4,6 +4,6 @@ exports[`App Exist and matches snapshot 1`] = `
 <div
   className="App"
 >
-  <Connect(MainForm) />
+  <MainForm />
 </div>
 `;
