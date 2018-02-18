@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 export const ingredientsReducer = (state = [], action) => {
   switch (action.type) {
   case 'SET_INGREDIENT':
-    return { ingredients: [...state, action.ingredients] };
+    return { ingredients: [...state, ...action.ingredients] };
   default:
     return state;
   }
