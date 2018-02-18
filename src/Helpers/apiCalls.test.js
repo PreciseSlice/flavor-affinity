@@ -1,14 +1,20 @@
 /* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { fetchFromApi, searchForIngredient, getAllIngredients } from './apiCalls';
+import {
+  fetchFromApi,
+  searchForIngredient,
+  getAllIngredients,
+  cleanAllIngredients
+} from './apiCalls';
+import { allIngredients, cleanData } from '../Components/App/testData';
 
 describe('apiCalls', () => {
   beforeEach(() => {
     window.fetch = jest.fn().mockImplementation(url => {
       return Promise.resolve({
         status: 200,
-        json: () => Promise.resolve({})
+        json: () => Promise.resolve(allIngredients)
       });
     });
   });
@@ -16,6 +22,8 @@ describe('apiCalls', () => {
   it('has multiple functions', () => {
     expect(fetchFromApi).toBeDefined();
     expect(searchForIngredient).toBeDefined();
+    expect(getAllIngredients).toBeDefined();
+    expect(cleanAllIngredients).toBeDefined();
   });
 
   describe('fetchFromApi', () => {
@@ -31,7 +39,9 @@ describe('apiCalls', () => {
           status: 500
         })
       );
-      expect(fetchFromApi('url')).rejects.toEqual(Error('Error: Status code > 200'));
+      expect(fetchFromApi('url')).rejects.toEqual(
+        Error('Error: Status code > 200')
+      );
     });
   });
 
@@ -41,14 +51,23 @@ describe('apiCalls', () => {
       searchForIngredient('url');
       expect(window.fetch).toHaveBeenCalled();
     });
-  })
+  });
 
   describe('getAllIngredients', () => {
-    it('calls fetchFromApi to get data', () => {
+    it('calls fetchFromApi and clean all ingredients', () => {
+      //const cleanAllIngredients = jest.fn()
       expect(window.fetch).not.toHaveBeenCalled();
       getAllIngredients('url');
       expect(window.fetch).toHaveBeenCalled();
+      //expect(cleanAllIngredients).toHaveBeenCalled();
     });
-  })
+  });
 
+  describe('cleanAllIngredients', () => {
+    it('filters the array of objects passed to it', () => {
+      const result = cleanAllIngredients(allIngredients);
+
+      expect(result).toEqual(cleanData);
+    });
+  });
 });

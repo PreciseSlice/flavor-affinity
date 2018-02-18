@@ -20,18 +20,26 @@ export const searchForIngredient = async ingredient => {
   const searchResult = await fetchFromApi(
     `https://api.foodpairing.com/ingredients/?q=${ingredient}`
   );
-  console.log(searchResult);
 
   return searchResult;
 };
 
-// going to need id after search to get pairing
-
 export const getAllIngredients = async () => {
   const allIngredients = await fetchFromApi(
-    'https://api.foodpairing.com/ingredients/?limit=500'
+    'https://api.foodpairing.com/ingredients/?limit=5'
   );
-  console.log(allIngredients);
+  //console.log(allIngredients);
 
-  return allIngredients;
+  return cleanAllIngredients(allIngredients);
+};
+
+export const cleanAllIngredients = ingredientsData => {
+  return ingredientsData.map(ingredient => {
+    return {
+      id: ingredient.id,
+      name: ingredient.name,
+      image: ingredient._links.image.size_240,
+      description: ingredient.description
+    };
+  });
 };
