@@ -5,6 +5,8 @@ import { MainForm } from '../MainForm/MainForm';
 import { getAllIngredients } from '../../Helpers/apiCalls';
 import { setIngredients } from '../../Actions';
 //import * as actions from '../../Actions';
+import CardContainer from '../CardContainer/CardContainer';
+import { allDataClean } from '../../Helpers/.mockApi.js';
 
 export class App extends Component {
   constructor(props) {
@@ -17,8 +19,9 @@ export class App extends Component {
 
   async componentDidMount() {
     const { setIngredients } = this.props;
-    const allIngredients = await getAllIngredients();
-    setIngredients(allIngredients);
+    //const allIngredients = await getAllIngredients();
+    //setIngredients(allIngredients);
+    setIngredients(allDataClean);
   }
 
   componentDidCatch(error, errorInfo) {
@@ -38,7 +41,7 @@ export class App extends Component {
   render() {
     if (this.state.error) {
       return (
-        <div>
+        <div className="eror">
           <h2>{'Oh-no! Something went wrong'}</h2>
           <p className="">{this.state.error && this.state.error.toString()}</p>
           <div>{'Component Stack Error Details: '}</div>
@@ -48,8 +51,9 @@ export class App extends Component {
       );
     }
     return (
-      <div className="App">
+      <div className="app">
         <MainForm />
+        <CardContainer />
       </div>
     );
   }
