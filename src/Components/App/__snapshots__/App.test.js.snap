@@ -2,8 +2,9 @@
 
 exports[`App Exist and matches snapshot 1`] = `
 <div
-  className="App"
+  className="app"
 >
   <MainForm />
+  <Connect(CardContainer) />
 </div>
 `;
