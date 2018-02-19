@@ -1,5 +1,5 @@
 import React from 'react';
-//import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './Card.css';
 
 const Card = ({ data }) => {
@@ -17,3 +17,12 @@ const Card = ({ data }) => {
 };
 
 export default Card;
+
+Card.propTypes = {
+  data: PropTypes.shape({
+    description: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired
+};

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-export const ingredientsReducer = (state = [], action) => {
+export const ingredientsReducer = (state = {}, action) => {
   switch (action.type) {
   case 'SET_INGREDIENT':
     return { ingredients: [...state, ...action.ingredients] };

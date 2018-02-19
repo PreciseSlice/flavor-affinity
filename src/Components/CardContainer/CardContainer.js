@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './CardContainer.css';
 import Card from '../Card/Card';
+import PropTypes from 'prop-types';
 
 class CardContainer extends Component {
   render() {
-    const { ingredientsArray } = this.props;
+    const { ingredientsObject } = this.props;
 
-    if (ingredientsArray.ingredients) {
-      const renderCards = ingredientsArray.ingredients.map(ingredient => {
+    if (ingredientsObject.ingredients) {
+      const renderCards = ingredientsObject.ingredients.map(ingredient => {
         return <Card data={ingredient} key={ingredient.id} />;
       });
 
@@ -20,7 +21,20 @@ class CardContainer extends Component {
 }
 
 export const mapStateToProps = state => ({
-  ingredientsArray: state.ingredients
+  ingredientsObject: state.ingredients
 });
 
 export default connect(mapStateToProps, null)(CardContainer);
+
+CardContainer.propTypes = {
+  ingredientsObject: PropTypes.shape({
+    ingredients: PropTypes.arrayOf(
+      PropTypes.shape({
+        description: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+      })
+    )
+  })
+};
