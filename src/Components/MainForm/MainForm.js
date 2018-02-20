@@ -18,8 +18,6 @@ export class MainForm extends Component {
 
     this.state = {
       userInput: '',
-      
-      allIngredients: [], //refacor this out its all in store
       suggestedIngredients: []
     };
   }
@@ -31,9 +29,6 @@ export class MainForm extends Component {
         return ingredient.name;
       });
       this.trie.populate(nameArray);
-      this.setState({
-        allIngredients
-      });
     }
   }
 
@@ -53,17 +48,17 @@ export class MainForm extends Component {
   // }
 
   getSuggestedData() {
-    return this.state.allIngredients.reduce((accu, item) => {
+    // return this.props.allIngredients.reduce((accu, item) => {
       //console.log(item);
       //console.log(this.state.suggestedIngredients);
 
-      if (this.state.suggestedIngredients.includes(item.name)) {
-        console.log('hi');
+    //   if (this.state.suggestedIngredients.includes(item.name)) {
+    //     console.log('hi');
 
-        accu.push(item);
-      }
-      return accu;
-    }, []);
+    //     accu.push(item);
+    //   }
+    //   return accu;
+    // }, []);
   }
 
   suggestIngredient(input) {
