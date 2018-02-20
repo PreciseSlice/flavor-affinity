@@ -53,6 +53,8 @@ describe('apiCalls', () => {
     });
   });
 
+  //check to see that it is called with specific parameters
+
   describe('getAllIngredients', () => {
     it('calls fetchFromApi and clean all ingredients', () => {
       //const cleanAllIngredients = jest.fn()
