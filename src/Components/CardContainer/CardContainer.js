@@ -4,7 +4,7 @@ import './CardContainer.css';
 import Card from '../Card/Card';
 import PropTypes from 'prop-types';
 
-class CardContainer extends Component {
+export class CardContainer extends Component {
   render() {
     const { allIngredients } = this.props;
     
