@@ -10,3 +10,16 @@ export const ingredients = [
     preparation: 'cooked'
   }
 ];
+
+export const suggestedIngredients = [
+  {
+    id: 94,
+    name: 'Apple (fresh)',
+    preparation: 'fresh'
+  },
+  {
+    id: 6176,
+    name: 'Artichoke (cooked)',
+    preparation: 'cooked'
+  }
+];
