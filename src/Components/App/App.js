@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { MainForm } from '../MainForm/MainForm';
-import { getAllIngredients } from '../../Helpers/apiCalls';
+import MainForm from '../MainForm/MainForm';
+import CardContainer from '../CardContainer/CardContainer';
+//import { getAllIngredients } from '../../Helpers/apiCalls';
 import { setIngredients } from '../../Actions';
 //import * as actions from '../../Actions';
-import CardContainer from '../CardContainer/CardContainer';
 import { allDataClean } from '../../Helpers/.mockApi.js';
+//import { cleanData } from '../App/testData';
 
 export class App extends Component {
   constructor(props) {
