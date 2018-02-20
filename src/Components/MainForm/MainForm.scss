@@ -2,6 +2,7 @@ input {
   height: 30px;
   width: 300px;
   border-radius: 30px;
+  outline: none;
 }
 
 ::-webkit-input-placeholder {
@@ -27,4 +28,5 @@ button {
   height: 33px;
   width: 90px;
   margin-left: 10px;
+  outline: none;
 }
