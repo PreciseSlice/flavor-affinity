@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+  setAllIngredients,
+  setSuggestedIngredients
+} from '../../Actions/index';
 //import * as actions from '../../Actions';
-import { setAllIngredients } from '../../Actions/index';
 //import { searchForIngredient } from '../../Helpers/apiCalls';
 import { PrefixTrie } from '@PreciseSlice/complete-me';
 import './MainForm.css';
@@ -15,14 +18,15 @@ export class MainForm extends Component {
 
     this.state = {
       userInput: '',
-      allIngredients: [],
+      
+      allIngredients: [], //refacor this out its all in store
       suggestedIngredients: []
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.allIngredients !== nextProps.allIngredients) {
-      const { allIngredients } = nextProps
+      const { allIngredients } = nextProps;
       const nameArray = allIngredients.map(ingredient => {
         return ingredient.name;
       });
@@ -48,12 +52,37 @@ export class MainForm extends Component {
   //   setAllIngredients(searchReasult);
   // }
 
+  getSuggestedData() {
+    return this.state.allIngredients.reduce((accu, item) => {
+      //console.log(item);
+      //console.log(this.state.suggestedIngredients);
+
+      if (this.state.suggestedIngredients.includes(item.name)) {
+        console.log('hi');
+
+        accu.push(item);
+      }
+      return accu;
+    }, []);
+  }
+
   suggestIngredient(input) {
     const suggestedIngredients = this.trie.suggest(input);
 
     this.setState({
       suggestedIngredients
     });
+
+    // need to compare the name of the suggested ingredient above
+    // and the all ingredients array.
+    // Trying to grab the objects with all the data in the ingredients array
+    // if its name is in the suggested array
+
+    const matches = this.getSuggestedData();
+
+    //console.log(matches);
+
+    //setSuggestedIngredients(suggestIngredients)
   }
 
   render() {
@@ -71,13 +100,11 @@ export class MainForm extends Component {
           />
 
           <datalist id="drop-down">
-            {/* need to make this conditional on data being
-                in the suggested ingredients array */}
             {this.state.suggestedIngredients
               .map(ingredient => {
                 return <option value={ingredient} key={ingredient} />;
               })
-              .slice(0, 5)}
+            }
           </datalist>
 
           <button onClick={event => this.submitForm(event)}>search</button>
@@ -88,22 +115,27 @@ export class MainForm extends Component {
 }
 
 export const mapStateToProps = state => ({
-  allIngredients: state.ingredients,
+  allIngredients: state.ingredients
 });
 
 export const mapDispatchToProps = dispatch => ({
-  setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient))
+  setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient)),
+  setSuggestedIngredients: suggestedIngredient =>
+    dispatch(setSuggestedIngredients(suggestedIngredient))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainForm);
 
 MainForm.propTypes = {
-  allIngredients: PropTypes.oneOfType([PropTypes.array, PropTypes.arrayOf(
-    PropTypes.shape({
-      description: PropTypes.string,
-      id: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    })
-  )]),
+  allIngredients: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        description: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+      })
+    )
+  ])
 };
