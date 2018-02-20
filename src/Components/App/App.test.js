@@ -69,6 +69,7 @@ describe('App', () => {
       );
       expect(App.prototype.componentDidCatch).toHaveBeenCalled();
 
+      //this could be an aftereach
       spy.mockReset();
       spy.mockRestore();
     });
