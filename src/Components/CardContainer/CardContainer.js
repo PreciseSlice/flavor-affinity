@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 
 class CardContainer extends Component {
   render() {
-    const { ingredients } = this.props.ingredientsObject;
-
-    if (ingredients) {
-      const renderCards = ingredients.map(ingredient => {
+    const { allIngredients } = this.props;
+    
+    if (allIngredients) {
+      const renderCards = allIngredients.map(ingredient => {
         return <Card data={ingredient} key={ingredient.id} />;
       });
 
@@ -21,19 +21,18 @@ class CardContainer extends Component {
 }
 
 export const mapStateToProps = state => ({
-  ingredientsObject: state.ingredients
+  allIngredients: state.ingredients
 });
 
 export default connect(mapStateToProps, null)(CardContainer);
 
 CardContainer.propTypes = {
-  ingredientsObject: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  ingredients: PropTypes.arrayOf(
+  allIngredients: PropTypes.oneOfType([PropTypes.array, PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string,
       id: PropTypes.number.isRequired,
       image: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
-  )
+  )]),
 };
