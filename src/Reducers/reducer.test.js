@@ -1,9 +1,9 @@
 /* eslint-disable */
 import { combineReducers, createStore } from 'redux';
-import rootReducer, { ingredientsReducer } from './index.js';
+import rootReducer, { allIngredientsReducer } from './index.js';
 
 describe('RootReducer test', () => {
-  const rootReducer = combineReducers({ ingredientsReducer });
+  const rootReducer = combineReducers({ allIngredientsReducer });
   const mockData = [
     {
       id: 94,
@@ -22,22 +22,22 @@ describe('RootReducer test', () => {
   beforeEach(() => {
     store = createStore(rootReducer);
     expectedStore = {
-      ingredientsReducer: []
+      allIngredientsReducer: []
     };
   });
 
   it('should have a default store which equals an empty array', () => {
-    expect(store.getState().ingredientsReducer).toEqual(
-      ingredientsReducer([], {})
+    expect(store.getState().allIngredientsReducer).toEqual(
+      allIngredientsReducer([], {})
     );
   });
 
-  it('ingredient reducer should handle SET_INGREDIENT action type and update store', () => {
+  it('ingredient reducer should handle SET_ALL_INGREDIENTS action type and update store', () => {
     expect(store.getState()).toEqual(expectedStore);
 
-    const ingredientsAction = { type: 'SET_INGREDIENT', ingredients: mockData };
+    const ingredientsAction = { type: 'SET_ALL_INGREDIENTS', ingredients: mockData };
     store.dispatch(ingredientsAction);
-    expect(store.getState().ingredientsReducer).toEqual(ingredientsReducer([], ingredientsAction))
+    expect(store.getState().allIngredientsReducer).toEqual(allIngredientsReducer([], ingredientsAction))
   });
   
 });
