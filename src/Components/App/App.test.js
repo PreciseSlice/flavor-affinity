@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { App, mapDispatchToProps } from './App';
 import { shallow, mount } from 'enzyme';
 import { allIngredients } from './testData';
-import { getAllIngredients } from '../../Helpers/apiCalls';
+//import { getAllIngredients } from '../../Helpers/apiCalls';
 
 window.fetch = jest.fn().mockImplementation(url => {
   return Promise.resolve({
@@ -20,7 +20,9 @@ describe('App', () => {
 
   beforeEach(() => {
     mockFn = jest.fn();
-    wrapper = shallow(<App setIngredients={mockFn} />);
+    wrapper = shallow(
+      <App setIngredients={mockFn} getAllIngredients={mockFn} />
+    );
   });
 
   it('Exist and matches snapshot', () => {
@@ -35,6 +37,7 @@ describe('App', () => {
 
   describe('componentDidMount', () => {
     it('calls componentDidMount() lifecycle method', () => {
+      console.error = mockFn;
       const spy = jest.spyOn(App.prototype, 'componentDidMount');
       const wrapper = mount(<App setIngredients={mockFn} />);
 
@@ -44,13 +47,13 @@ describe('App', () => {
       spy.mockRestore();
     });
 
-    it.skip('calls getAll ingredients and setIngredients when component mounts', () => {
+    it('calls getAll ingredients and setIngredients when component mounts', () => {
       expect(wrapper.instance().props.setIngredients).toHaveBeenCalled();
-      //expect(getAllIngredients).toHaveBeenCalled()
+      expect(wrapper.instance().props.getAllIngredients).toHaveBeenCalled();
     });
   });
 
-  describe.skip('componentDidCatch', () => {
+  describe('componentDidCatch', () => {
     const ProblemChild = () => {
       throw new Error('Error thrown from problem child');
       return <div>Error</div>;
