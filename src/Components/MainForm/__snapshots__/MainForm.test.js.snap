@@ -8,10 +8,16 @@ exports[`MainForm Exist and matches snapshot 1`] = `
     onSubmit={[Function]}
   >
     <input
+      autoComplete="off"
+      autoFocus={true}
+      list="drop-down"
       name="userInput"
       onChange={[Function]}
       placeholder="enter ingredient"
       type="text"
+    />
+    <datalist
+      id="drop-down"
     />
     <button
       onClick={[Function]}
