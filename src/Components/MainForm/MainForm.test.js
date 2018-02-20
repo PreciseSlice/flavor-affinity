@@ -21,13 +21,19 @@ describe('MainForm', () => {
   });
 
   describe('handleChange', () => {
+    const event = { target: { value: 'Apple', name: 'userInput' } };
+    
     it('should set the user input to state', () => {
-      const event = { target: { value: 'Hello', name: 'userInput' } };
-
       expect(wrapper.state().userInput).toEqual('');
       wrapper.instance().handleChange(event);
-      expect(wrapper.state().userInput).toEqual('Hello');
+      expect(wrapper.state().userInput).toEqual('Apple');
     });
+
+    it.skip('should call suggestIngredient', () => {
+      const suggestIngredient = jest.fn()
+      wrapper.instance().handleChange(event);
+      expect(wrapper.instance().suggestIngredient).toHaveBeenCalled()
+    })
   });
 
   describe.skip('submitForm', () => {
@@ -58,7 +64,7 @@ describe('MainForm', () => {
 
       mapped.setAllIngredients();
 
-      expect(mockDispatch).toHaveBeenCalledTimes(1);
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });
