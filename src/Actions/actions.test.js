@@ -8,14 +8,14 @@ let store = createStore(rootReducer);
 
 describe('actions testing', () => {
   
-  describe('setIngredients', () => {
+  describe('setAllIngredients', () => {
     
-    it('should return a type of SET_INGREDIENT with ingredients', () => {
+    it('should return a type of SET_ALL_INGREDIENTS with ingredients', () => {
       const expected = {
-        type: 'SET_INGREDIENT',
+        type: 'SET_ALL_INGREDIENTS',
         ingredients
       };
-      expect(actions.setIngredients(ingredients)).toEqual(expected);
+      expect(actions.setAllIngredients(ingredients)).toEqual(expected);
     });
 
   });

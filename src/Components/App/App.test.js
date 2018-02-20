@@ -21,7 +21,7 @@ describe('App', () => {
   beforeEach(() => {
     mockFn = jest.fn();
     wrapper = shallow(
-      <App setIngredients={mockFn} getAllIngredients={mockFn} />
+      <App setAllIngredients={mockFn} getAllIngredients={mockFn} />
     );
   });
 
@@ -39,7 +39,7 @@ describe('App', () => {
     it('calls componentDidMount() lifecycle method', () => {
       console.error = mockFn;
       const spy = jest.spyOn(App.prototype, 'componentDidMount');
-      const wrapper = mount(<App setIngredients={mockFn} />);
+      const wrapper = mount(<App setAllIngredients={mockFn} />);
 
       expect(App.prototype.componentDidMount).toHaveBeenCalled();
 
@@ -47,8 +47,8 @@ describe('App', () => {
       spy.mockRestore();
     });
 
-    it('calls getAll ingredients and setIngredients when component mounts', () => {
-      expect(wrapper.instance().props.setIngredients).toHaveBeenCalled();
+    it('calls getAll ingredients and setAllIngredients when component mounts', () => {
+      expect(wrapper.instance().props.setAllIngredients).toHaveBeenCalled();
       expect(wrapper.instance().props.getAllIngredients).toHaveBeenCalled();
     });
   });
@@ -63,7 +63,7 @@ describe('App', () => {
       console.error = mockFn;
       const spy = jest.spyOn(App.prototype, 'componentDidCatch');
       const wrapper = mount(
-        <App setIngredients={mockFn}>
+        <App setAllIngredients={mockFn}>
           <ProblemChild />
         </App>
       );
