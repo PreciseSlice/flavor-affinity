@@ -5,7 +5,7 @@ import { setIngredients } from '../../Actions/index';
 //import { searchForIngredient } from '../../Helpers/apiCalls';
 import { PrefixTrie } from '@PreciseSlice/complete-me';
 import './MainForm.css';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export class MainForm extends Component {
   constructor(props) {
@@ -22,13 +22,13 @@ export class MainForm extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.ingredientsObject !== nextProps.ingredientsObject) {
-      const { ingredientsObject } = nextProps;
-      const nameArray = ingredientsObject.ingredients.map(ingredient => {
+      const { ingredients } = nextProps.ingredientsObject;
+      const nameArray = ingredients.map(ingredient => {
         return ingredient.name;
       });
       this.trie.populate(nameArray);
       this.setState({
-        allIngredients: nextProps.ingredientsObject.ingredients
+        allIngredients: ingredients
       });
     }
   }
@@ -60,7 +60,6 @@ export class MainForm extends Component {
     return (
       <div className="form-container">
         <form onSubmit={event => this.submitForm(event)}>
-
           <input
             autoComplete="off"
             autoFocus
@@ -72,6 +71,8 @@ export class MainForm extends Component {
           />
 
           <datalist id="drop-down">
+            {/* need to make this conditional on data being
+                in the suggested ingredients array */}
             {this.state.suggestedIngredients
               .map(ingredient => {
                 return <option value={ingredient} key={ingredient} />;
@@ -95,3 +96,15 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainForm);
+
+MainForm.propTypes = {
+  ingredientsObject: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  ingredients: PropTypes.arrayOf(
+    PropTypes.shape({
+      description: PropTypes.string,
+      id: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  )
+};
