@@ -6,8 +6,8 @@ import CardContainer from '../CardContainer/CardContainer';
 //import { getAllIngredients } from '../../Helpers/apiCalls';
 import { setAllIngredients } from '../../Actions';
 //import * as actions from '../../Actions';
-//import { allDataClean } from '../../Helpers/.mockApi.js';
-import { cleanData } from '../App/testData';
+import { allDataClean } from '../../Helpers/.mockApi.js';
+//import { cleanData } from '../App/testData';
 
 export class App extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export class App extends Component {
     const { setAllIngredients } = this.props;
     //const allIngredients = await getAllIngredients();
     //setAllIngredients(allIngredients);
-    setAllIngredients(cleanData);
+    setAllIngredients(allDataClean);
   }
 
   componentDidCatch(error, errorInfo) {
