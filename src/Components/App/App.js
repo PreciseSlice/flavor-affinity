@@ -4,10 +4,10 @@ import './App.css';
 import MainForm from '../MainForm/MainForm';
 import CardContainer from '../CardContainer/CardContainer';
 //import { getAllIngredients } from '../../Helpers/apiCalls';
-import { setIngredients } from '../../Actions';
+import { setAllIngredients } from '../../Actions';
 //import * as actions from '../../Actions';
-import { allDataClean } from '../../Helpers/.mockApi.js';
-//import { cleanData } from '../App/testData';
+//import { allDataClean } from '../../Helpers/.mockApi.js';
+import { cleanData } from '../App/testData';
 
 export class App extends Component {
   constructor(props) {
@@ -19,10 +19,10 @@ export class App extends Component {
   }
 
   async componentDidMount() {
-    const { setIngredients } = this.props;
+    const { setAllIngredients } = this.props;
     //const allIngredients = await getAllIngredients();
-    //setIngredients(allIngredients);
-    setIngredients(allDataClean);
+    //setAllIngredients(allIngredients);
+    setAllIngredients(cleanData);
   }
 
   componentDidCatch(error, errorInfo) {
@@ -65,7 +65,7 @@ export class App extends Component {
 // });
 
 export const mapDispatchToProps = dispatch => ({
-  setIngredients: ingredient => dispatch(setIngredients(ingredient))
+  setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient))
 });
 
 export default connect(null, mapDispatchToProps)(App);
