@@ -54,6 +54,7 @@ describe('MainForm', () => {
     it('should call the dispatch function when using a function from mapDispachToProps', () => {
       const mockDispatch = jest.fn();
       const mapped = mapDispatchToProps(mockDispatch);
+      //verify what is being returned from MDTP object
 
       mapped.setAllIngredients();
 
