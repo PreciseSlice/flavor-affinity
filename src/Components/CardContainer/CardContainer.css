@@ -1,5 +1,6 @@
 .card-container {
   background: rgba(87, 87, 87, 0.6);
+  box-shadow: 0 0 5px 5px rgba(87, 87, 87, 0.6);
   height: 70%;
   margin-top: 3%;
   width: 90%;
