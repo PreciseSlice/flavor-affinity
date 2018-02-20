@@ -31,7 +31,7 @@ describe('MainForm', () => {
   });
 
   describe.skip('submitForm', () => {
-    it('should call searchForIngredients and setIngredients', () => {
+    it('should call searchForIngredients and setAllIngredients', () => {
       const mockFn = jest.fn();
       const event = { preventDefault: mockFn };
 
@@ -42,11 +42,11 @@ describe('MainForm', () => {
         });
       });
 
-      wrapper = shallow(<MainForm setIngredients={mockFn} />);
+      wrapper = shallow(<MainForm setAllIngredients={mockFn} />);
       wrapper.instance().submitForm(event);
 
       expect(window.fetch).toHaveBeenCalled();
-      expect(wrapper.instance().props.setIngredients).toHaveBeenCalled();
+      expect(wrapper.instance().props.setAllIngredients).toHaveBeenCalled();
     });
   });
 
@@ -55,7 +55,7 @@ describe('MainForm', () => {
       const mockDispatch = jest.fn();
       const mapped = mapDispatchToProps(mockDispatch);
 
-      mapped.setIngredients();
+      mapped.setAllIngredients();
 
       expect(mockDispatch).toHaveBeenCalledTimes(1);
     });
