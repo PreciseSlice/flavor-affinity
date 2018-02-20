@@ -29,9 +29,6 @@ export class MainForm extends Component {
         return ingredient.name;
       });
       this.trie.populate(nameArray);
-      // this.setState({
-      //   allIngredients
-      // });
     }
   }
 
