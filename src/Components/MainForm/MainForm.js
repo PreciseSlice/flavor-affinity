@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //import * as actions from '../../Actions';
-import { setIngredients } from '../../Actions/index';
+import { setAllIngredients } from '../../Actions/index';
 //import { searchForIngredient } from '../../Helpers/apiCalls';
 import { PrefixTrie } from '@PreciseSlice/complete-me';
 import './MainForm.css';
@@ -21,14 +21,14 @@ export class MainForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.ingredientsObject !== nextProps.ingredientsObject) {
-      const { ingredients } = nextProps.ingredientsObject;
-      const nameArray = ingredients.map(ingredient => {
+    if (this.props.allIngredients !== nextProps.allIngredients) {
+      const { allIngredients } = nextProps
+      const nameArray = allIngredients.map(ingredient => {
         return ingredient.name;
       });
       this.trie.populate(nameArray);
       this.setState({
-        allIngredients: ingredients
+        allIngredients
       });
     }
   }
@@ -42,10 +42,10 @@ export class MainForm extends Component {
 
   // async submitForm(event) {
   //   event.preventDefault();
-  //   const { setIngredients } = this.props;
+  //   const { setAllIngredients } = this.props;
   //   const { userInput } = this.state;
   //   const searchReasult = await searchForIngredient(userInput);
-  //   setIngredients(searchReasult);
+  //   setAllIngredients(searchReasult);
   // }
 
   suggestIngredient(input) {
@@ -88,23 +88,22 @@ export class MainForm extends Component {
 }
 
 export const mapStateToProps = state => ({
-  ingredientsObject: state.ingredients
+  allIngredients: state.ingredients,
 });
 
 export const mapDispatchToProps = dispatch => ({
-  setIngredients: ingredient => dispatch(setIngredients(ingredient))
+  setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainForm);
 
 MainForm.propTypes = {
-  ingredientsObject: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  ingredients: PropTypes.arrayOf(
+  allIngredients: PropTypes.oneOfType([PropTypes.array, PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string,
       id: PropTypes.number.isRequired,
       image: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
-  )
+  )]),
 };
