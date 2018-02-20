@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card exist and matches snapshot 1`] = `
+<div
+  className="card"
+>
+  <h1>
+    1724 Tonic
+  </h1>
+  <img
+    alt="#"
+    src="https://pantry.foodpairing.com/apps/4578_240_0"
+  />
+  <div
+    className="discription-container"
+  >
+    <p>
+      The essence of 1724 Tonic Water has its origins in the Andes, on the mythical Inca Trail. This is not by chance. This is where quinine was discovered. There, this ingredient gains the authenticity of a product with roots in the region that go back hundreds of years. At 1724 metres above sea level. Not a metre above or below.
+    </p>
+  </div>
+</div>
+`;
