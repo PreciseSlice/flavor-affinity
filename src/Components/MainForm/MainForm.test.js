@@ -1,8 +1,9 @@
 /* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MainForm, mapDispatchToProps } from './MainForm';
+import { MainForm, mapDispatchToProps, mapStateToProps } from './MainForm';
 import { shallow, mount } from 'enzyme';
+import { cleanData } from '../App/testData';
 
 describe('MainForm', () => {
   let wrapper;
@@ -16,8 +17,29 @@ describe('MainForm', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should have a default state of userInput set to an empty string', () => {
+  it('should have a default state of userInput set to an empty string and suggestedIngredients set to an empty array', () => {
     expect(wrapper.state().userInput).toEqual('');
+    expect(wrapper.state().suggestedIngredients).toEqual([]);
+  });
+
+  describe('componentWillReciveProps', () => {
+    
+    it('should call tries populate method once props are recieved', () => {
+      const spy = jest.spyOn(MainForm.prototype, 'componentWillReceiveProps');
+      const wrapper = mount(<MainForm />);
+
+      expect(MainForm.prototype.componentWillReceiveProps).not.toHaveBeenCalled();
+
+      wrapper.setProps({ suggestedIngredients: cleanData });
+
+      expect(MainForm.prototype.componentWillReceiveProps).toHaveBeenCalled();
+      
+      // need to mock this
+      //expect(wrapper.instance().trie.populate).toHaveBeenCalled()
+
+      spy.mockReset();
+      spy.mockRestore();
+    });
   });
 
   describe('handleChange', () => {
@@ -55,6 +77,19 @@ describe('MainForm', () => {
       expect(wrapper.instance().props.setAllIngredients).toHaveBeenCalled();
     });
   });
+
+  describe('mapStateToProps', () => {
+    it('should map items in the store to props', () => {
+      const mockStore = {
+        state : {
+          ingredients: cleanData
+        }
+      };
+      const mapped = mapStateToProps(mockStore);
+  
+      expect(mapped.allIngredients).toEqual(mockStore.allIngredients);
+    });
+  })
 
   describe('mapDispatchToProps', () => {
     it('should call the dispatch function when using a function from mapDispachToProps', () => {
