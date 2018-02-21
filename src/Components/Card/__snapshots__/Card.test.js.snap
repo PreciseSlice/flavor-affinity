@@ -8,9 +8,14 @@ exports[`Card exist and matches snapshot 1`] = `
     1724 Tonic
   </h1>
   <img
-    alt="#"
+    alt="ingredient"
     src="https://pantry.foodpairing.com/apps/4578_240_0"
   />
+  <button
+    onClick={[Function]}
+  >
+    select
+  </button>
   <div
     className="discription-container"
   >
