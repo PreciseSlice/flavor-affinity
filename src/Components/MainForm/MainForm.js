@@ -17,8 +17,7 @@ export class MainForm extends Component {
     this.trie = new PrefixTrie();
 
     this.state = {
-      userInput: '',
-      suggestedIngredients: []
+      userInput: ''
     };
   }
 
@@ -26,7 +25,7 @@ export class MainForm extends Component {
     if (this.props.allIngredients !== nextProps.allIngredients) {
       const { allIngredients } = nextProps;
       const nameArray = allIngredients.map(ingredient => ingredient.name);
-      
+
       this.trie.populate(nameArray);
     }
   }
@@ -46,36 +45,16 @@ export class MainForm extends Component {
   //   setAllIngredients(searchReasult);
   // }
 
-  // not working, happening before state is updated I think
-  // async getSuggestedData() {
-  //   const { allIngredients } = this.props;
-  //   const { suggestedIngredients } = this.state;
-
-  //   const mapped = await allIngredients.filter(ingredient =>
-  //     suggestedIngredients.includes(ingredient.name)
-  //   );
-
-  //   console.log(mapped);
-  // }
-
   suggestIngredient(input) {
     const suggestedIngredients = this.trie.suggest(input);
 
-    this.setState({
-      suggestedIngredients
-    });
-
-    // cannot call this right after the set state 
-    // will excute before the state change
-    //this.getSuggestedData();
-
-    //setSuggestedIngredients(suggestIngredients)
+    this.props.setSuggestedIngredients(suggestedIngredients);
   }
 
   render() {
     return (
       <div className="form-container">
-        <form onSubmit={event => this.submitForm(event)}>
+        <form /* onSubmit={event => this.submitForm(event) } */>
           <input
             autoComplete="off"
             autoFocus
@@ -87,12 +66,16 @@ export class MainForm extends Component {
           />
 
           <datalist id="drop-down">
-            {this.state.suggestedIngredients.map(ingredient => {
-              return <option value={ingredient} key={ingredient} />;
-            })}
+            {this.props.suggestedIngredients
+              .map((ingredient, i) => {
+                return <option value={ingredient} key={i} />;
+              })
+              .slice(0, 5)}
           </datalist>
 
-          <button onClick={event => this.submitForm(event)}>search</button>
+          <button /* onClick={event => this.submitForm(event)} */>
+            search
+          </button>
         </form>
       </div>
     );
@@ -100,13 +83,14 @@ export class MainForm extends Component {
 }
 
 export const mapStateToProps = state => ({
-  allIngredients: state.ingredients
+  allIngredients: state.ingredients,
+  suggestedIngredients: state.suggestedIngredients
 });
 
 export const mapDispatchToProps = dispatch => ({
   setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient)),
-  setSuggestedIngredients: suggestedIngredient =>
-    dispatch(setSuggestedIngredients(suggestedIngredient))
+  setSuggestedIngredients: suggestedIngredients =>
+    dispatch(setSuggestedIngredients(suggestedIngredients))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainForm);
