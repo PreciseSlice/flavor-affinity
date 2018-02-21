@@ -7,7 +7,7 @@ describe( 'CardContainer', () => {
   
   it('exist and matches snapshot', () => {
     const wrapper = shallow(
-      <CardContainer  allIngredients={cleanData} />
+      <CardContainer  allIngredients={cleanData} suggestedIngredients={cleanData} />
     )
     expect(wrapper).toBeDefined();
     expect(wrapper).toMatchSnapshot()
