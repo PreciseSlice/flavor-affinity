@@ -6,4 +6,9 @@ export const setAllIngredients = ingredients => ({
 export const setSuggestedIngredients = suggestedIngredients => ({
   type: 'SET_SUGGESTED_INGREDIENTS',
   suggestedIngredients
-})  
+})
+
+export const setSelectedCards = selectedCards => ({
+  type:  'SET_SELECTED_CARD',
+  selectedCards
+})
