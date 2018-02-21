@@ -28,7 +28,6 @@ export const getAllIngredients = async () => {
   const allIngredients = await fetchFromApi(
     'https://api.foodpairing.com/ingredients/?limit=5'
   );
-  //console.log(allIngredients);
 
   return cleanAllIngredients(allIngredients);
 };
@@ -37,7 +36,7 @@ export const cleanAllIngredients = ingredientsData => {
   return ingredientsData.map(ingredient => {
     return {
       id: ingredient.id,
-      name: ingredient.name,
+      name: ingredient.name.toLowerCase(),
       image: ingredient._links.image.size_240,
       description: ingredient.description
     };
