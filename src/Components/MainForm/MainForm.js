@@ -25,9 +25,8 @@ export class MainForm extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.allIngredients !== nextProps.allIngredients) {
       const { allIngredients } = nextProps;
-      const nameArray = allIngredients.map(ingredient => {
-        return ingredient.name;
-      });
+      const nameArray = allIngredients.map(ingredient => ingredient.name);
+      
       this.trie.populate(nameArray);
     }
   }
@@ -47,19 +46,17 @@ export class MainForm extends Component {
   //   setAllIngredients(searchReasult);
   // }
 
-  getSuggestedData() {
-    // return this.props.allIngredients.reduce((accu, item) => {
-      //console.log(item);
-      //console.log(this.state.suggestedIngredients);
+  // not working, happening before state is updated I think
+  // async getSuggestedData() {
+  //   const { allIngredients } = this.props;
+  //   const { suggestedIngredients } = this.state;
 
-    //   if (this.state.suggestedIngredients.includes(item.name)) {
-    //     console.log('hi');
+  //   const mapped = await allIngredients.filter(ingredient =>
+  //     suggestedIngredients.includes(ingredient.name)
+  //   );
 
-    //     accu.push(item);
-    //   }
-    //   return accu;
-    // }, []);
-  }
+  //   console.log(mapped);
+  // }
 
   suggestIngredient(input) {
     const suggestedIngredients = this.trie.suggest(input);
@@ -68,14 +65,9 @@ export class MainForm extends Component {
       suggestedIngredients
     });
 
-    // need to compare the name of the suggested ingredient above
-    // and the all ingredients array.
-    // Trying to grab the objects with all the data in the ingredients array
-    // if its name is in the suggested array
-
-    const matches = this.getSuggestedData();
-
-    //console.log(matches);
+    // cannot call this right after the set state 
+    // will excute before the state change
+    //this.getSuggestedData();
 
     //setSuggestedIngredients(suggestIngredients)
   }
@@ -95,11 +87,9 @@ export class MainForm extends Component {
           />
 
           <datalist id="drop-down">
-            {this.state.suggestedIngredients
-              .map(ingredient => {
-                return <option value={ingredient} key={ingredient} />;
-              })
-            }
+            {this.state.suggestedIngredients.map(ingredient => {
+              return <option value={ingredient} key={ingredient} />;
+            })}
           </datalist>
 
           <button onClick={event => this.submitForm(event)}>search</button>
