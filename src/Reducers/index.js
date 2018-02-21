@@ -18,9 +18,19 @@ export const suggestedIngredientsReducer = (state = [], action) => {
     }
 }
 
+export const selectedCardReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_SELECTED_CARD':
+      return action.selectedCards
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   ingredients: allIngredientsReducer,
-  suggestedIngredients: suggestedIngredientsReducer
+  suggestedIngredients: suggestedIngredientsReducer,
+  selectedCards: selectedCardReducer
 });
 
 export default rootReducer;
