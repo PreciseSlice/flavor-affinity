@@ -6,14 +6,24 @@ import PropTypes from 'prop-types';
 
 export class CardContainer extends Component {
   render() {
-    const { allIngredients } = this.props;
-    
-    if (allIngredients) {
-      const renderCards = allIngredients.map(ingredient => {
+    const { allIngredients, suggestedIngredients } = this.props;
+
+    const filtered = allIngredients.filter(ingredient => {
+      return suggestedIngredients.includes(ingredient.name);
+    });
+
+    if (allIngredients && !filtered.length) {
+      const cards = allIngredients.map(ingredient => {
         return <Card data={ingredient} key={ingredient.id} />;
       });
 
-      return <div className="card-container">{renderCards}</div>;
+      return <div className="card-container">{cards}</div>;
+    } else if (filtered.length > 1) {
+      const cards = filtered.map(ingredient => {
+        return <Card data={ingredient} key={ingredient.id} />;
+      });
+
+      return <div className="card-container">{cards}</div>;
     } else {
       return null;
     }
@@ -21,18 +31,22 @@ export class CardContainer extends Component {
 }
 
 export const mapStateToProps = state => ({
-  allIngredients: state.ingredients
+  allIngredients: state.ingredients,
+  suggestedIngredients: state.suggestedIngredients
 });
 
 export default connect(mapStateToProps, null)(CardContainer);
 
 CardContainer.propTypes = {
-  allIngredients: PropTypes.oneOfType([PropTypes.array, PropTypes.arrayOf(
-    PropTypes.shape({
-      description: PropTypes.string,
-      id: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    })
-  )]),
+  allIngredients: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        description: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+      })
+    )
+  ])
 };
