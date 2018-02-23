@@ -18,7 +18,7 @@ export class CardContainer extends Component {
       });
 
       return <div className="card-container">{cards}</div>;
-    } else if (filtered.length > 1) {
+    } else if (filtered.length) {
       const cards = filtered.map(ingredient => {
         return <Card data={ingredient} key={ingredient.id} />;
       });
