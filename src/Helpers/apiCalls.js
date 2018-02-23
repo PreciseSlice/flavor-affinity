@@ -38,7 +38,8 @@ export const cleanAllIngredients = ingredientsData => {
       id: ingredient.id,
       name: ingredient.name.toLowerCase(),
       image: ingredient._links.image.size_240,
-      description: ingredient.description
+      description: ingredient.description,
+      favorite: false
     };
   });
 };
