@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import './App.css';
 import MainForm from '../MainForm/MainForm';
 import CardContainer from '../CardContainer/CardContainer';
-//import { getAllIngredients } from '../../Helpers/apiCalls';
 import { setAllIngredients } from '../../Actions';
 //import * as actions from '../../Actions';
+//import { getAllIngredients } from '../../Helpers/apiCalls';
 import { allDataClean } from '../../Helpers/.mockApi.js';
 //import { cleanData } from '../App/testData';
+import { Switch, Route } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 export class App extends Component {
   constructor(props) {
@@ -52,10 +54,27 @@ export class App extends Component {
       );
     }
     return (
-      <div className="app">
-        <MainForm />
-        <CardContainer />
-      </div>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div className="app">
+              <MainForm />
+              <CardContainer />
+            </div>
+          )}
+        />
+        <Route
+          path="/pairings"
+          render={() => (
+            <div className="app">
+              {/* <Pairings /> */}
+              <CardContainer />
+            </div>
+          )}
+        />
+      </Switch>
     );
   }
 }
@@ -68,4 +87,4 @@ export const mapDispatchToProps = dispatch => ({
   setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));
