@@ -105,7 +105,7 @@ describe('MainForm', () => {
       const mockDispatch = jest.fn();
       const mapped = mapDispatchToProps(mockDispatch);
       //verify what is being returned from MDTP object
-
+      // .toHaveBeenCalledWith(expectedParams)
       mapped.setAllIngredients();
 
       expect(mockDispatch).toHaveBeenCalled();
