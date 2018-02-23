@@ -7,6 +7,10 @@ import { setSelectedCards } from '../../Actions/index'
 export const Card = ({ data, selectedCards, setSelectedCards }) => {
   const { name, image, description } = data;
 
+  // this is merging two things 
+  // add is one thing and remove is another
+  // should be boolean property of card not an array 
+  // logic could be in action
   const clickHandler = data => {
     if (!selectedCards.includes(data)) {
       const newCards = [...selectedCards, data];
