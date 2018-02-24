@@ -5,7 +5,7 @@
   color: white;
   display: flex;
   flex-direction: column;
-  height: 60%;
+  height: 75%;
   margin-top: 3%;
   justify-content: center;
   width: 30%;
@@ -31,12 +31,16 @@
   }
 }
 
+.pairing-btn {
+  margin-left: 30px;
+}
+
 .discription-container {
   height: 50%;
   width: 90%;
   margin-top: 30px;
   overflow: auto;
-  margin: 3% 0 3% 0;
+  margin: 4% 0 4% 0;
 }
 
 .discription-container::-webkit-scrollbar {
