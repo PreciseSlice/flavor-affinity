@@ -27,10 +27,20 @@ export const selectedCardReducer = (state = [], action) => {
   }
 }
 
+export const setPairingsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'SET_PAIRINGS':
+      return action.pairingsObject
+    default:
+    return state;
+  }
+}
+
 const rootReducer = combineReducers({
   ingredients: allIngredientsReducer,
   suggestedIngredients: suggestedIngredientsReducer,
-  selectedCards: selectedCardReducer
+  selectedCards: selectedCardReducer,
+  pairingsObject: setPairingsReducer
 });
 
 export default rootReducer;
