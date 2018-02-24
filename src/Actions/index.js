@@ -12,3 +12,8 @@ export const setSelectedCards = selectedCards => ({
   type:  'SET_SELECTED_CARD',
   selectedCards
 })
+
+export const setPairings = pairingsObject => ({
+  type: 'SET_PAIRINGS',
+  pairingsObject
+})
