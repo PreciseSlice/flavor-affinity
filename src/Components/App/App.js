@@ -6,10 +6,11 @@ import CardContainer from '../CardContainer/CardContainer';
 import { setAllIngredients } from '../../Actions';
 //import * as actions from '../../Actions';
 //import { getAllIngredients } from '../../Helpers/apiCalls';
-import { allDataClean } from '../../Helpers/.mockApi.js';
-//import { cleanData } from '../App/testData';
+//import { allDataClean } from '../../Helpers/.mockApi.js';
+import { cleanData } from '../App/testData';
 import { Switch, Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import Pairings from '../Pairings/Pairings';
 
 export class App extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export class App extends Component {
     const { setAllIngredients } = this.props;
     //const allIngredients = await getAllIngredients();
     //setAllIngredients(allIngredients);
-    setAllIngredients(allDataClean);
+    setAllIngredients(cleanData);
   }
 
   componentDidCatch(error, errorInfo) {
@@ -69,8 +70,8 @@ export class App extends Component {
           path="/pairings"
           render={() => (
             <div className="app">
-              {/* <Pairings /> */}
-              <CardContainer />
+              <Pairings />
+              {/* <CardContainer /> */}
             </div>
           )}
         />

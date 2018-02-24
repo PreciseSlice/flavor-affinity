@@ -9,6 +9,7 @@ import {
 import { PrefixTrie } from '@PreciseSlice/complete-me';
 import './MainForm.css';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 export class MainForm extends Component {
   constructor(props) {
@@ -53,7 +54,15 @@ export class MainForm extends Component {
 
   render() {
     return (
+
+      //should live in nav
+
       <div className="form-container">
+        <div>
+          <button>
+            <NavLink to="/pairings">Pairings</NavLink>
+          </button>
+        </div>
         <form /* onSubmit={event => this.submitForm(event) } */>
           <input
             autoComplete="off"
