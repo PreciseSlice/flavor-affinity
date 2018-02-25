@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Card } from './Card';
+import { Card, mapDispatchToProps, mapStateToProps } from './Card';
+import { cleanData } from '../App/testData';
 
 const cardData = {
   description:
@@ -22,4 +23,28 @@ describe('Card', () => {
     expect(wrapper).toBeDefined();
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('should map items in the store to props', () => {
+    const mockStore = {
+      state: {
+        selectedCards: cleanData
+      }
+    };
+    const mapped = mapStateToProps(mockStore);
+
+    expect(mapped.selectedCards).toEqual(mockStore.selectedCards);
+  });
+
+  describe('MDTP', () => {
+    it('should call the dispatch function when using a function from mapDispachToProps', () => {
+      const mockDispatch = jest.fn();
+      const mapped = mapDispatchToProps(mockDispatch);
+
+      mapped.setSelectedCards(cleanData);
+      mapped.setPairings();
+
+      expect(mockDispatch).toHaveBeenCalledTimes(2);
+    });
+  })
+
 });
