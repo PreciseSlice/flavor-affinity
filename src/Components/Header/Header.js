@@ -17,8 +17,8 @@ export const Header = ({ selectedCards }) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const mapStateToProps = state => ({
   selectedCards: state.selectedCards
@@ -39,4 +39,4 @@ Header.propTypes = {
       })
     )
   ])
-}
+};
