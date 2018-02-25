@@ -1,0 +1,23 @@
+.header-container {
+  align-items: center;
+  background: rgba(87, 87, 87, 0.6);
+  box-shadow: 0 0 5px 5px rgba(87, 87, 87, 0.6);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%; }
+  .header-container h1 {
+    font-size: 8em;
+    color: white;
+    letter-spacing: 0.2em; }
+
+.header-btn-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: -15px;
+  width: 20%; }
+  .header-btn-container a {
+    text-decoration: none; }
+  .header-btn-container button {
+    width: 33%; }
