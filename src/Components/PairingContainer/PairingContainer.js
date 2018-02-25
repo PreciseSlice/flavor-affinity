@@ -1,7 +1,7 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Card from '../Card/Card';
+import PropTypes from 'prop-types';
 
 export const PairingContainer = ({ pairingsObject }) => {
   const topFive = pairingsObject.topFive.map(ingredient => {
@@ -52,11 +52,13 @@ export const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, null)(PairingContainer);
 
-// PairingContainer.propTypes = {
-//   pairingsObject: PropTypes.shape({
-//     description: PropTypes.string,
-//     id: PropTypes.number.isRequired,
-//     image: PropTypes.string.isRequired,
-//     name: PropTypes.string.isRequired
-//   }).isRequired
-// };
+PairingContainer.propTypes = {
+  pairingsObject: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.shape({
+      topFive: PropTypes.array,
+      middleFive: PropTypes.array,
+      finalFive: PropTypes.array
+    })
+  ])
+};

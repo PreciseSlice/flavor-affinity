@@ -49,8 +49,32 @@ CardContainer.propTypes = {
         description: PropTypes.string,
         id: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired
+        name: PropTypes.string.isRequired,
+        selected: PropTypes.bool.isRequired
       })
     )
+  ]),
+
+  suggestedIngredients: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        description: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        selected: PropTypes.bool.isRequired
+      })
+    )
+  ]),
+
+  pairingsObject: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.shape({
+      topFive: PropTypes.array,
+      middleFive: PropTypes.array,
+      finalFive: PropTypes.array
+    })
   ])
+
 };
