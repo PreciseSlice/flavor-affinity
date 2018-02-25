@@ -1,6 +1,7 @@
+/* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header , mapStateToProps } from './Header';
+import { Header, mapStateToProps } from './Header';
 import { shallow } from 'enzyme';
 import { cleanData } from '../App/testData';
 
@@ -28,5 +29,4 @@ describe('Header', () => {
       expect(mapped.selectedCards).toEqual(mockStore.selectedCards);
     });
   });
-
 });
