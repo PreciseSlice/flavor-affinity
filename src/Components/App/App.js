@@ -4,13 +4,12 @@ import './App.css';
 import MainForm from '../MainForm/MainForm';
 import CardContainer from '../CardContainer/CardContainer';
 import { setAllIngredients } from '../../Actions';
-//import * as actions from '../../Actions';
 //import { getAllIngredients } from '../../Helpers/apiCalls';
 //import { allDataClean } from '../../Helpers/.mockApi.js';
 import { cleanData } from '../App/testData';
 import { Switch, Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import Pairings from '../Pairings/Pairings';
+import Selected from '../Selected/Selected';
 
 export class App extends Component {
   constructor(props) {
@@ -67,11 +66,10 @@ export class App extends Component {
           )}
         />
         <Route
-          path="/pairings"
+          path="/selected"
           render={() => (
             <div className="app">
-              <Pairings />
-              {/* <CardContainer /> */}
+              <Selected />
             </div>
           )}
         />
@@ -79,10 +77,6 @@ export class App extends Component {
     );
   }
 }
-
-// export const mapStateToProps = state => ({
-
-// });
 
 export const mapDispatchToProps = dispatch => ({
   setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient))
