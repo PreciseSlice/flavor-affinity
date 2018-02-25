@@ -13,8 +13,7 @@ describe('MainForm', () => {
     wrapper = shallow(<MainForm suggestedIngredients={cleanData} setSuggestedIngredients={mockFn} />);
   });
 
-  it('Exist and matches snapshot', () => {
-    expect(wrapper).toBeDefined();
+  it('matches snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -69,12 +68,14 @@ describe('MainForm', () => {
     it('should map items in the store to props', () => {
       const mockStore = {
         state: {
-          ingredients: cleanData
+          ingredients: cleanData,
+          suggestedIngredients: cleanData
         }
       };
       const mapped = mapStateToProps(mockStore);
 
-      expect(mapped.allIngredients).toEqual(mockStore.allIngredients);
+      expect(mapped.allIngredients).toEqual(mockStore.ingredients);
+      expect(mapped.suggestedIngredients).toEqual(mockStore.suggestedIngredients);
     });
   });
 
@@ -85,8 +86,9 @@ describe('MainForm', () => {
       //verify what is being returned from MDTP object
       // .toHaveBeenCalledWith(expectedParams)
       mapped.setAllIngredients();
+      mapped.setSuggestedIngredients()
 
-      expect(mockDispatch).toHaveBeenCalled();
+      expect(mockDispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
