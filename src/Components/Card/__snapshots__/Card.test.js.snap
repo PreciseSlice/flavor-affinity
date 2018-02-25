@@ -11,11 +11,19 @@ exports[`Card exist and matches snapshot 1`] = `
     alt="ingredient"
     src="https://pantry.foodpairing.com/apps/4578_240_0"
   />
-  <button
-    onClick={[Function]}
-  >
-    select
-  </button>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      select
+    </button>
+    <button
+      className="pairing-btn"
+      onClick={[Function]}
+    >
+      pairings
+    </button>
+  </div>
   <div
     className="discription-container"
   >
