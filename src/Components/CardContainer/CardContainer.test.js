@@ -5,11 +5,17 @@ import { CardContainer, mapStateToProps } from './CardContainer';
 import { cleanData } from '../App/testData';
 
 describe('CardContainer', () => {
+
+  const pairingsObject = {
+    topFive: []
+  }
+
   it('exist and matches snapshot', () => {
     const wrapper = shallow(
       <CardContainer
         allIngredients={cleanData}
         suggestedIngredients={cleanData}
+        pairingsObject={pairingsObject}
       />
     );
     expect(wrapper).toBeDefined();
