@@ -11,9 +11,14 @@ const cardData = {
   name: '1724 Tonic'
 };
 
+let mockFn;
+
 describe('Card', () => {
   it('exist and matches snapshot', () => {
-    const wrapper = shallow(<Card data={cardData} />);
+    mockFn = jest.fn();
+    const wrapper = shallow(
+      <Card data={cardData} setSelectedCards={mockFn} setPairings={mockFn} />
+    );
     expect(wrapper).toBeDefined();
     expect(wrapper).toMatchSnapshot();
   });
