@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header matches snapshot 1`] = `
+<div
+  className="header-container"
+>
+  <h1>
+    blend
+  </h1>
+  <div
+    className="header-btn-container"
+  >
+    <button>
+      <NavLink
+        activeClassName="active"
+        ariaCurrent="true"
+        to="/"
+      >
+        Home
+      </NavLink>
+    </button>
+    <button>
+      <NavLink
+        activeClassName="active"
+        ariaCurrent="true"
+        to="/selected"
+      >
+        Ingredients: 
+        3
+      </NavLink>
+    </button>
+  </div>
+</div>
+`;
