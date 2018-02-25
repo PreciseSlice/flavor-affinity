@@ -1,10 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Exist and matches snapshot 1`] = `
-<div
-  className="app"
->
-  <Connect(MainForm) />
-  <Connect(CardContainer) />
-</div>
+<Switch>
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    path="/selected"
+    render={[Function]}
+  />
+</Switch>
 `;

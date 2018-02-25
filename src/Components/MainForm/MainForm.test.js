@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { MainForm, mapDispatchToProps, mapStateToProps } from './MainForm';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { cleanData } from '../App/testData';
 
 describe('MainForm', () => {
@@ -26,7 +26,7 @@ describe('MainForm', () => {
     it('should call tries populate method once props are recieved', () => {
       const mockFn = jest.fn();
       const spy = jest.spyOn(MainForm.prototype, 'componentWillReceiveProps');
-      const wrapper = mount(
+      const wrapper = shallow(
         <MainForm
           suggestedIngredients={cleanData}
           setSuggestedIngredients={mockFn}
@@ -62,28 +62,6 @@ describe('MainForm', () => {
       const suggestIngredient = jest.fn();
       wrapper.instance().handleChange(event);
       expect(wrapper.instance().suggestIngredient).toHaveBeenCalled();
-    });
-  });
-
-  describe.skip('submitForm', () => {
-    it('should call searchForIngredients and setAllIngredients', () => {
-      const mockFn = jest.fn();
-      const event = { preventDefault: mockFn };
-
-      window.fetch = jest.fn().mockImplementation(url => {
-        return Promise.resolve({
-          status: 200,
-          json: () => Promise.resolve({})
-        });
-      });
-
-      wrapper = shallow(
-        <MainForm setAllIngredients={mockFn} suggestedIngredients={cleanData} />
-      );
-      wrapper.instance().submitForm(event);
-
-      expect(window.fetch).toHaveBeenCalled();
-      expect(wrapper.instance().props.setAllIngredients).toHaveBeenCalled();
     });
   });
 

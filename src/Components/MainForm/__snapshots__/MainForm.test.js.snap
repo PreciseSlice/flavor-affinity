@@ -4,6 +4,26 @@ exports[`MainForm Exist and matches snapshot 1`] = `
 <div
   className="form-container"
 >
+  <div>
+    <button>
+      <NavLink
+        activeClassName="active"
+        ariaCurrent="true"
+        to="/selected"
+      >
+        Ingredients
+      </NavLink>
+    </button>
+    <button>
+      <NavLink
+        activeClassName="active"
+        ariaCurrent="true"
+        to="/"
+      >
+        Home
+      </NavLink>
+    </button>
+  </div>
   <form>
     <input
       autoComplete="off"
@@ -25,6 +45,7 @@ exports[`MainForm Exist and matches snapshot 1`] = `
             "id": 5902,
             "image": "https://pantry.foodpairing.com/apps/4578_240_0",
             "name": "1724 tonic",
+            "selected": false,
           }
         }
       />
@@ -36,6 +57,7 @@ exports[`MainForm Exist and matches snapshot 1`] = `
             "id": 5440,
             "image": "https://pantry.foodpairing.com/apps/1772_240_0",
             "name": "a la chimay bleue",
+            "selected": false,
           }
         }
       />
@@ -47,13 +69,11 @@ exports[`MainForm Exist and matches snapshot 1`] = `
             "id": 5443,
             "image": "https://pantry.foodpairing.com/apps/1773_240_0",
             "name": "a la chimay rouge",
+            "selected": false,
           }
         }
       />
     </datalist>
-    <button>
-      search
-    </button>
   </form>
 </div>
 `;
