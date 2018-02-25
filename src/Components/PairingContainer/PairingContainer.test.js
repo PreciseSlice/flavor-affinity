@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { PairingContainer, mapStateToProps } from './PairingContainer';
@@ -29,5 +30,4 @@ describe('MainForm', () => {
       expect(mapped.pairingsObject).toEqual(mockStore.pairingsObject);
     });
   });
-
 });
