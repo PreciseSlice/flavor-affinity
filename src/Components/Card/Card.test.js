@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Card } from './Card';
@@ -8,14 +9,12 @@ const cardData = {
   id: 5902,
   image: 'https://pantry.foodpairing.com/apps/4578_240_0',
   name: '1724 Tonic'
-}
+};
 
 describe('Card', () => {
   it('exist and matches snapshot', () => {
-    const wrapper = shallow(
-      <Card  data={cardData} />
-    )
+    const wrapper = shallow(<Card data={cardData} />);
     expect(wrapper).toBeDefined();
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+    expect(wrapper).toMatchSnapshot();
+  });
+});
