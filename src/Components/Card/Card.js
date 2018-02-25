@@ -66,5 +66,22 @@ Card.propTypes = {
     id: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+
+  selectedCards: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        description: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        selected: PropTypes.bool.isRequired
+      })
+    )
+  ]),
+
+  setSelectedCards: PropTypes.func.isRequired,
+
+  setPairings: PropTypes.func.isRequired
 };
