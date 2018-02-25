@@ -4,26 +4,6 @@ exports[`MainForm matches snapshot 1`] = `
 <div
   className="form-container"
 >
-  <div>
-    <button>
-      <NavLink
-        activeClassName="active"
-        ariaCurrent="true"
-        to="/selected"
-      >
-        Ingredients
-      </NavLink>
-    </button>
-    <button>
-      <NavLink
-        activeClassName="active"
-        ariaCurrent="true"
-        to="/"
-      >
-        Home
-      </NavLink>
-    </button>
-  </div>
   <form>
     <input
       autoComplete="off"

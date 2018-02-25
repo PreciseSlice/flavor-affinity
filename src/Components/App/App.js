@@ -10,6 +10,7 @@ import { cleanData } from '../App/testData';
 import { Switch, Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import Selected from '../Selected/Selected';
+import Header from '../Header/Header';
 
 export class App extends Component {
   constructor(props) {
@@ -60,6 +61,7 @@ export class App extends Component {
           path="/"
           render={() => (
             <div className="app">
+              <Header />
               <MainForm />
               <CardContainer />
             </div>
@@ -69,6 +71,7 @@ export class App extends Component {
           path="/selected"
           render={() => (
             <div className="app">
+              <Header />
               <Selected />
             </div>
           )}

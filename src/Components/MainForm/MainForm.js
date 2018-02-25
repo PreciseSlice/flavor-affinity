@@ -4,12 +4,9 @@ import {
   setAllIngredients,
   setSuggestedIngredients
 } from '../../Actions/index';
-//import * as actions from '../../Actions';
-//import { searchForIngredient } from '../../Helpers/apiCalls';
 import { PrefixTrie } from '@PreciseSlice/complete-me';
 import './MainForm.css';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
 export class MainForm extends Component {
   constructor(props) {
@@ -47,14 +44,6 @@ export class MainForm extends Component {
   render() {
     return (
       <div className="form-container">
-        <div>
-          <button>
-            <NavLink to="/selected">Ingredients</NavLink>
-          </button>
-          <button>
-            <NavLink to="/">Home</NavLink>
-          </button>
-        </div>
         <form>
           <input
             autoComplete="off"
