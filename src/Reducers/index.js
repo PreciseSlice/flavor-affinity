@@ -11,30 +11,30 @@ export const allIngredientsReducer = (state = [], action) => {
 
 export const suggestedIngredientsReducer = (state = [], action) => {
   switch (action.type) {
-    case 'SET_SUGGESTED_INGREDIENTS':
-      return action.suggestedIngredients 
-    default:
-      return state;
-    }
-}
+  case 'SET_SUGGESTED_INGREDIENTS':
+    return action.suggestedIngredients;
+  default:
+    return state;
+  }
+};
 
 export const selectedCardReducer = (state = [], action) => {
   switch (action.type) {
-    case 'SET_SELECTED_CARD':
-      return action.selectedCards
-    default:
-      return state;
+  case 'SET_SELECTED_CARD':
+    return action.selectedCards;
+  default:
+    return state;
   }
-}
+};
 
 export const setPairingsReducer = (state = {}, action) => {
   switch (action.type) {
-    case 'SET_PAIRINGS':
-      return action.pairingsObject
-    default:
+  case 'SET_PAIRINGS':
+    return action.pairingsObject;
+  default:
     return state;
   }
-}
+};
 
 const rootReducer = combineReducers({
   ingredients: allIngredientsReducer,
