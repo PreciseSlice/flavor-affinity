@@ -5,29 +5,32 @@ import './Card.css';
 import { setSelectedCards, setPairings } from '../../Actions/index';
 import { getParings } from '../../Helpers/apiCalls';
 
-export const Card = ({ data, selectedCards, setSelectedCards, setPairings }) => {
+export const Card = ({
+  data,
+  selectedCards,
+  setSelectedCards,
+  setPairings
+}) => {
   const { name, image, description, id } = data;
 
-  // this is merging two things 
+  // this is merging two things
   // add is one thing and remove is another
-  // should be boolean property of card not an array 
+  // should be boolean property of card not an array
   // logic could be in action
   const handleSelect = data => {
     if (!selectedCards.includes(data)) {
       const newCards = [...selectedCards, data];
-      setSelectedCards(newCards)
+      setSelectedCards(newCards);
     } else {
-      const newCards = [
-        selectedCards.filter(card => card !== data)
-      ];
-      setSelectedCards(newCards)
+      const newCards = [selectedCards.filter(card => card !== data)];
+      setSelectedCards(newCards);
     }
   };
 
-  const handlePairing = async (id) => {
-    const pairings = await getParings(id);
-    setPairings(pairings)
-  }
+  const handlePairing = async (id, name) => {
+    const pairings = await getParings(id, name);
+    setPairings(pairings);
+  };
 
   return (
     <div className="card">
@@ -35,7 +38,9 @@ export const Card = ({ data, selectedCards, setSelectedCards, setPairings }) => 
       <img src={image} alt="ingredient" />
       <div>
         <button onClick={() => handleSelect(data)}>select</button>
-        <button className="pairing-btn" onClick={() => handlePairing(id)} >pairings</button>
+        <button className="pairing-btn" onClick={() => handlePairing(id, name)}>
+          pairings
+        </button>
       </div>
       <div className="discription-container">
         <p>{description}</p>
@@ -46,12 +51,12 @@ export const Card = ({ data, selectedCards, setSelectedCards, setPairings }) => 
 
 export const mapStateToProps = state => ({
   selectedCards: state.selectedCards
-})
+});
 
 export const mapDispatchToProps = dispatch => ({
   setSelectedCards: selectedCards => dispatch(setSelectedCards(selectedCards)),
   setPairings: pairingsObject => dispatch(setPairings(pairingsObject))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
 

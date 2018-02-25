@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Card from '../Card/Card';
@@ -7,9 +7,8 @@ import { NavLink } from 'react-router-dom';
 
 export class Pairings extends Component {
   render() {
-    
     const { selectedCards } = this.props;
-    
+
     if (selectedCards) {
       const cards = selectedCards.map(ingredient => {
         return <Card data={ingredient} key={ingredient.id} />;
@@ -21,11 +20,10 @@ export class Pairings extends Component {
           </button>
           {cards}
         </div>
-      ) 
+      );
     } else {
       return null;
     }
-
   }
 }
 
@@ -47,4 +45,4 @@ Pairings.propTypes = {
       })
     )
   ])
-} 
+};

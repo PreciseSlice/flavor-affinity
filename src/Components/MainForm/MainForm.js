@@ -38,14 +38,6 @@ export class MainForm extends Component {
     this.suggestIngredient(value);
   }
 
-  // async submitForm(event) {
-  //   event.preventDefault();
-  //   const { setAllIngredients } = this.props;
-  //   const { userInput } = this.state;
-  //   const searchReasult = await searchForIngredient(userInput);
-  //   setAllIngredients(searchReasult);
-  // }
-
   suggestIngredient(input) {
     const suggestedIngredients = this.trie.suggest(input);
 
@@ -54,16 +46,16 @@ export class MainForm extends Component {
 
   render() {
     return (
-
-      //should live in nav
-
       <div className="form-container">
         <div>
           <button>
-            <NavLink to="/pairings">Pairings</NavLink>
+            <NavLink to="/selected">Ingredients</NavLink>
+          </button>
+          <button>
+            <NavLink to="/">Home</NavLink>
           </button>
         </div>
-        <form /* onSubmit={event => this.submitForm(event) } */>
+        <form>
           <input
             autoComplete="off"
             autoFocus
@@ -76,15 +68,11 @@ export class MainForm extends Component {
 
           <datalist id="drop-down">
             {this.props.suggestedIngredients
-              .map((ingredient, i) => {
-                return <option value={ingredient} key={i} />;
+              .map((ingredient, index) => {
+                return <option value={ingredient} key={index} />;
               })
               .slice(0, 5)}
           </datalist>
-
-          <button /* onClick={event => this.submitForm(event)} */>
-            search
-          </button>
         </form>
       </div>
     );

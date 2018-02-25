@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 import './CardContainer.css';
 import Card from '../Card/Card';
 import PropTypes from 'prop-types';
+import PairingContainer from '../PairingContainer/PairingContainer';
 
 export class CardContainer extends Component {
   render() {
-    const { allIngredients, suggestedIngredients } = this.props;
+    const { allIngredients, suggestedIngredients, pairingsObject } = this.props;
 
     const filtered = allIngredients.filter(ingredient => {
       return suggestedIngredients.includes(ingredient.name);
     });
 
-    if (allIngredients && !filtered.length) {
+    if (allIngredients && !filtered.length && !pairingsObject.topFive) {
       const cards = allIngredients.map(ingredient => {
         return <Card data={ingredient} key={ingredient.id} />;
       });
@@ -24,6 +25,8 @@ export class CardContainer extends Component {
       });
 
       return <div className="card-container">{cards}</div>;
+    } else if (pairingsObject.topFive) {
+      return <PairingContainer />;
     } else {
       return null;
     }
@@ -32,7 +35,8 @@ export class CardContainer extends Component {
 
 export const mapStateToProps = state => ({
   allIngredients: state.ingredients,
-  suggestedIngredients: state.suggestedIngredients
+  suggestedIngredients: state.suggestedIngredients,
+  pairingsObject: state.pairingsObject
 });
 
 export default connect(mapStateToProps, null)(CardContainer);
