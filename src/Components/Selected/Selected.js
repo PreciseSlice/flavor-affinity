@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 import '../CardContainer/CardContainer.css';
 import { NavLink } from 'react-router-dom';
 
-export class Pairings extends Component {
+export class Selected extends Component {
   render() {
     const { selectedCards } = this.props;
 
@@ -31,9 +31,9 @@ export const mapStateToProps = state => ({
   selectedCards: state.selectedCards
 });
 
-export default connect(mapStateToProps, null)(Pairings);
+export default connect(mapStateToProps, null)(Selected);
 
-Pairings.propTypes = {
+Selected.propTypes = {
   selectedCards: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.arrayOf(
