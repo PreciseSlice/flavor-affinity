@@ -152,7 +152,7 @@ export const cleanData = [
   {
     description:
       'The essence of 1724 Tonic Water has its origins in the Andes, on the mythical Inca Trail. This is not by chance. This is where quinine was discovered. There, this ingredient gains the authenticity of a product with roots in the region that go back hundreds of years. At 1724 metres above sea level. Not a metre above or below.',
-    favorite: false,
+    selected: false,
     id: 5902,
     image: 'https://pantry.foodpairing.com/apps/4578_240_0',
     name: '1724 tonic'
@@ -160,7 +160,7 @@ export const cleanData = [
   {
     description:
       'The rind of the à la Chimay Bleue is regularly washed with the Chimay Blue Cap during his stay in the aging cellars of the monestarey. Pronounced flavor with a slight bitterness of the hops.',
-    favorite: false,
+    selected: false,
     id: 5440,
     image: 'https://pantry.foodpairing.com/apps/1772_240_0',
     name: 'a la chimay bleue'
@@ -168,7 +168,7 @@ export const cleanData = [
   {
     description:
       'The à la Chimay Rouge is a round, smooth cheese with creamy texture. Its natural rind is washed with Chimay Red Cap. Fruity flavour with slight bitterness.',
-    favorite: false,
+    selected: false,
     id: 5443,
     image: 'https://pantry.foodpairing.com/apps/1773_240_0',
     name: 'a la chimay rouge'
