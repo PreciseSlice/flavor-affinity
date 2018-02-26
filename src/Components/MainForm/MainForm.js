@@ -2,24 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   setAllIngredients,
-  setSuggestedIngredients
+  setSuggestedIngredients,
+  setUserInput
 } from '../../Actions/index';
-//import * as actions from '../../Actions';
-//import { searchForIngredient } from '../../Helpers/apiCalls';
 import { PrefixTrie } from '@PreciseSlice/complete-me';
 import './MainForm.css';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
 export class MainForm extends Component {
   constructor(props) {
     super(props);
 
     this.trie = new PrefixTrie();
-
-    this.state = {
-      userInput: ''
-    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,9 +26,10 @@ export class MainForm extends Component {
   }
 
   handleChange(event) {
-    const { name, value } = event.target;
+    const { setUserInput } = this.props;
+    const { value } = event.target;
 
-    this.setState({ [name]: value });
+    setUserInput(value);
     this.suggestIngredient(value);
   }
 
@@ -47,22 +42,15 @@ export class MainForm extends Component {
   render() {
     return (
       <div className="form-container">
-        <div>
-          <button>
-            <NavLink to="/selected">Ingredients</NavLink>
-          </button>
-          <button>
-            <NavLink to="/">Home</NavLink>
-          </button>
-        </div>
         <form>
           <input
             autoComplete="off"
             autoFocus
             name="userInput"
             type="text"
+            value={this.props.userInput}
             onChange={event => this.handleChange(event)}
-            placeholder="enter ingredient"
+            placeholder="search"
             list="drop-down"
           />
 
@@ -81,13 +69,15 @@ export class MainForm extends Component {
 
 export const mapStateToProps = state => ({
   allIngredients: state.ingredients,
-  suggestedIngredients: state.suggestedIngredients
+  suggestedIngredients: state.suggestedIngredients,
+  userInput: state.userInput
 });
 
 export const mapDispatchToProps = dispatch => ({
   setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient)),
   setSuggestedIngredients: suggestedIngredients =>
-    dispatch(setSuggestedIngredients(suggestedIngredients))
+    dispatch(setSuggestedIngredients(suggestedIngredients)),
+  setUserInput: userInput => dispatch(setUserInput(userInput))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainForm);
@@ -119,6 +109,7 @@ MainForm.propTypes = {
     )
   ]),
 
-  setSuggestedIngredients: PropTypes.func.isRequired
-
+  setSuggestedIngredients: PropTypes.func.isRequired,
+  setUserInput: PropTypes.func.isRequired,
+  userInput: PropTypes.string
 };

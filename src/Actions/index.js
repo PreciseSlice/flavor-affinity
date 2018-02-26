@@ -13,7 +13,20 @@ export const setSelectedCards = selectedCards => ({
   selectedCards
 });
 
+export const clearSelectedCards = () => ({
+  type: 'CLEAR_SELECTED_CARDS'
+});
+
 export const setPairings = pairingsObject => ({
   type: 'SET_PAIRINGS',
   pairingsObject
+});
+
+export const clearPairings = () => ({
+  type: 'CLEAR_PAIRINGS'
+});
+
+export const setUserInput = userInput => ({
+  type: 'SET_USER_INPUT',
+  userInput
 });

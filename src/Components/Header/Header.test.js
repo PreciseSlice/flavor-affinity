@@ -1,17 +1,16 @@
 /* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { PairingContainer, mapStateToProps } from './PairingContainer';
+import { Header, mapStateToProps } from './Header';
 import { shallow } from 'enzyme';
 import { cleanData } from '../App/testData';
-import { slicedData } from '../../Helpers/testingMockData';
 
-describe('MainForm', () => {
+describe('Header', () => {
   let wrapper;
   const mockFn = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<PairingContainer pairingsObject={slicedData} />);
+    wrapper = shallow(<Header selectedCards={cleanData} clearSelectedCards={mockFn} clearPairings={mockFn} />);
   });
 
   it('matches snapshot', () => {
@@ -22,12 +21,12 @@ describe('MainForm', () => {
     it('should map items in the store to props', () => {
       const mockStore = {
         state: {
-          pairingsObject: slicedData
+          selectedCards: cleanData
         }
       };
       const mapped = mapStateToProps(mockStore);
 
-      expect(mapped.pairingsObject).toEqual(mockStore.pairingsObject);
+      expect(mapped.selectedCards).toEqual(mockStore.selectedCards);
     });
   });
 });
