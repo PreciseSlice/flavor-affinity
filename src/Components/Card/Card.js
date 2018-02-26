@@ -9,14 +9,11 @@ export const Card = ({
   data,
   selectedCards,
   setSelectedCards,
-  setPairings
+  setPairings,
+  selected
 }) => {
   const { name, image, description, id } = data;
 
-  // this is merging two things
-  // add is one thing and remove is another
-  // should be boolean property of card not an array
-  // logic could be in action
   const handleSelect = data => {
     if (!selectedCards.includes(data)) {
       const newCards = [...selectedCards, data];
@@ -33,7 +30,7 @@ export const Card = ({
   };
 
   return (
-    <div className="card">
+    <div className={"card " + selected}>
       <h1>{name}</h1>
       <img src={image} alt="ingredient" />
       <div>

@@ -2,7 +2,7 @@
 
 exports[`Card exist and matches snapshot 1`] = `
 <div
-  className="card"
+  className="card undefined"
 >
   <h1>
     1724 Tonic
