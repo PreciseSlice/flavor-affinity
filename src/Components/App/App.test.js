@@ -26,8 +26,7 @@ describe('App', () => {
     );
   });
 
-  it('Exist and matches snapshot', () => {
-    expect(wrapper).toBeDefined();
+  it('matches snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
