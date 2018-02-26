@@ -10,13 +10,16 @@ exports[`Header matches snapshot 1`] = `
   <div
     className="header-btn-container"
   >
-    <button>
+    <button
+      onClick={[Function]}
+      title="click to go home"
+    >
       <NavLink
         activeClassName="active"
         ariaCurrent="true"
         to="/"
       >
-        Home
+        home
       </NavLink>
     </button>
     <button>
@@ -25,9 +28,19 @@ exports[`Header matches snapshot 1`] = `
         ariaCurrent="true"
         to="/selected"
       >
-        Ingredients: 
+        ingredients: 
         3
       </NavLink>
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      clear pairings
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      clear selections
     </button>
   </div>
 </div>
