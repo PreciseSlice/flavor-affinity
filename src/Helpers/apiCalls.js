@@ -1,4 +1,4 @@
-import { AppId, AppKey } from './.apiKey.js';
+import { AppId, AppKey} from './.apiKey.js';
 
 export const fetchFromApi = async url => {
   try {
