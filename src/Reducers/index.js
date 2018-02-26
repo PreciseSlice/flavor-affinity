@@ -21,7 +21,11 @@ export const suggestedIngredientsReducer = (state = [], action) => {
 export const selectedCardReducer = (state = [], action) => {
   switch (action.type) {
   case 'SET_SELECTED_CARD':
-    return action.selectedCards;
+    if (!state.includes(action.selectedCards)) {
+      return [...state, action.selectedCards];
+    } else {
+      return state.filter(card => card.id !== action.selectedCards.id);
+    }
   case 'CLEAR_SELECTED_CARDS':
     return (state = []);
   default:
