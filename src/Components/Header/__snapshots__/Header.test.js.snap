@@ -4,15 +4,25 @@ exports[`Header matches snapshot 1`] = `
 <div
   className="header-container"
 >
+  <ReactTooltip
+    insecure={true}
+    resizeHide={true}
+    wrapper="div"
+  />
   <h1>
     blend
   </h1>
+  <h2>
+    serving inspiration daily
+  </h2>
+  <h3>
+    discover ingredient pairings instantly 
+  </h3>
   <div
     className="header-btn-container"
   >
     <button
       onClick={[Function]}
-      title="click to go home"
     >
       <NavLink
         activeClassName="active"
@@ -22,7 +32,9 @@ exports[`Header matches snapshot 1`] = `
         home
       </NavLink>
     </button>
-    <button>
+    <button
+      data-tip="compare selected ingredients"
+    >
       <NavLink
         activeClassName="active"
         ariaCurrent="true"
