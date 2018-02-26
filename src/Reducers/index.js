@@ -22,6 +22,8 @@ export const selectedCardReducer = (state = [], action) => {
   switch (action.type) {
   case 'SET_SELECTED_CARD':
     return action.selectedCards;
+  case 'CLEAR_SELECTED_CARDS':
+    return (state = []);
   default:
     return state;
   }
@@ -31,6 +33,8 @@ export const setPairingsReducer = (state = {}, action) => {
   switch (action.type) {
   case 'SET_PAIRINGS':
     return action.pairingsObject;
+  case 'CLEAR_PAIRINGS':
+    return (state = {});
   default:
     return state;
   }
