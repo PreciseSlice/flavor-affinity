@@ -7,7 +7,12 @@ import PairingContainer from '../PairingContainer/PairingContainer';
 
 export class CardContainer extends Component {
   render() {
-    const { allIngredients, suggestedIngredients, pairingsObject } = this.props;
+    const {
+      allIngredients,
+      suggestedIngredients,
+      pairingsObject,
+      selectedCards
+    } = this.props;
 
     const filtered = allIngredients.filter(ingredient => {
       return suggestedIngredients.includes(ingredient.name);
@@ -15,13 +20,21 @@ export class CardContainer extends Component {
 
     if (allIngredients && !filtered.length && !pairingsObject.topFive) {
       const cards = allIngredients.map(ingredient => {
-        return <Card data={ingredient} key={ingredient.id} />;
+        const selected = selectedCards.includes(ingredient) ? 'selected' : '';
+
+        return (
+          <Card data={ingredient} key={ingredient.id} selected={selected} />
+        );
       });
 
       return <div className="card-container">{cards}</div>;
     } else if (filtered.length) {
       const cards = filtered.map(ingredient => {
-        return <Card data={ingredient} key={ingredient.id} />;
+        
+        const selected = selectedCards.includes(ingredient) ? 'selected' : '';
+        return (
+          <Card data={ingredient} key={ingredient.id} selected={selected} />
+        );
       });
 
       return <div className="card-container">{cards}</div>;
@@ -36,7 +49,8 @@ export class CardContainer extends Component {
 export const mapStateToProps = state => ({
   allIngredients: state.ingredients,
   suggestedIngredients: state.suggestedIngredients,
-  pairingsObject: state.pairingsObject
+  pairingsObject: state.pairingsObject,
+  selectedCards: state.selectedCards
 });
 
 export default connect(mapStateToProps, null)(CardContainer);
@@ -75,6 +89,18 @@ CardContainer.propTypes = {
       middleFive: PropTypes.array,
       finalFive: PropTypes.array
     })
-  ])
+  ]),
 
+  selectedCards: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        description: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        selected: PropTypes.bool.isRequired
+      })
+    )
+  ])
 };
