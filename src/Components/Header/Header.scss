@@ -6,11 +6,15 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  color: white;
 
   h1 {
     font-size: 8em;
-    color: white;
     letter-spacing: 0.2em;
+  }
+
+  p{
+    font-size: 1.6em;
   }
 }
 
@@ -19,13 +23,24 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: -15px;
-  width: 19.5%;
+  width: 56%;
 
   a {
    text-decoration: none; 
   }
 
   button {
-    width: 33%;
+    width: 21%;
   }
+
+  button:hover {
+    background: rgba(81, 102, 85, 0.9);
+    border: none;
+    color: white;
+    a {
+      background: rgba(81, 102, 85, 0.9);
+      color: white;
+    }
+  }
+
 }
