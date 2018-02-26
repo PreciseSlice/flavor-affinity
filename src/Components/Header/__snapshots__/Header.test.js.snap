@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header matches snapshot 1`] = `
+<div
+  className="header-container"
+>
+  <ReactTooltip
+    insecure={true}
+    resizeHide={true}
+    wrapper="div"
+  />
+  <h1>
+    blend
+  </h1>
+  <h2>
+    serving inspiration daily
+  </h2>
+  <h3>
+    discover ingredient pairings instantly 
+  </h3>
+  <div
+    className="header-btn-container"
+  >
+    <button
+      onClick={[Function]}
+    >
+      <NavLink
+        activeClassName="active"
+        ariaCurrent="true"
+        to="/"
+      >
+        home
+      </NavLink>
+    </button>
+    <button
+      data-tip="compare selected ingredients"
+    >
+      <NavLink
+        activeClassName="active"
+        ariaCurrent="true"
+        to="/selected"
+      >
+        ingredients: 
+        3
+      </NavLink>
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      clear pairings
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      clear selections
+    </button>
+  </div>
+</div>
+`;

@@ -5,27 +5,8 @@ import './Card.css';
 import { setSelectedCards, setPairings } from '../../Actions/index';
 import { getParings } from '../../Helpers/apiCalls';
 
-export const Card = ({
-  data,
-  selectedCards,
-  setSelectedCards,
-  setPairings
-}) => {
+export const Card = ({ data, setSelectedCards, setPairings, selected }) => {
   const { name, image, description, id } = data;
-
-  // this is merging two things
-  // add is one thing and remove is another
-  // should be boolean property of card not an array
-  // logic could be in action
-  const handleSelect = data => {
-    if (!selectedCards.includes(data)) {
-      const newCards = [...selectedCards, data];
-      setSelectedCards(newCards);
-    } else {
-      const newCards = [selectedCards.filter(card => card !== data)];
-      setSelectedCards(newCards);
-    }
-  };
 
   const handlePairing = async (id, name) => {
     const pairings = await getParings(id, name);
@@ -33,12 +14,21 @@ export const Card = ({
   };
 
   return (
-    <div className="card">
+    <div className={'card ' + selected}>
       <h1>{name}</h1>
       <img src={image} alt="ingredient" />
       <div>
-        <button onClick={() => handleSelect(data)}>select</button>
-        <button className="pairing-btn" onClick={() => handlePairing(id, name)}>
+        <button
+          title="select for multi-ingredient pairing"
+          onClick={() => setSelectedCards(data)}
+        >
+          select
+        </button>
+        <button
+          title="get this ingredient's pairings now"
+          className="pairing-btn"
+          onClick={() => handlePairing(id, name)}
+        >
           pairings
         </button>
       </div>
@@ -49,16 +39,12 @@ export const Card = ({
   );
 };
 
-export const mapStateToProps = state => ({
-  selectedCards: state.selectedCards
-});
-
 export const mapDispatchToProps = dispatch => ({
   setSelectedCards: selectedCards => dispatch(setSelectedCards(selectedCards)),
   setPairings: pairingsObject => dispatch(setPairings(pairingsObject))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(null, mapDispatchToProps)(Card);
 
 Card.propTypes = {
   data: PropTypes.shape({
@@ -68,20 +54,7 @@ Card.propTypes = {
     name: PropTypes.string.isRequired
   }).isRequired,
 
-  selectedCards: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        description: PropTypes.string,
-        id: PropTypes.number.isRequired,
-        image: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        selected: PropTypes.bool.isRequired
-      })
-    )
-  ]),
-
   setSelectedCards: PropTypes.func.isRequired,
-
-  setPairings: PropTypes.func.isRequired
+  setPairings: PropTypes.func.isRequired,
+  selected: PropTypes.string
 };
