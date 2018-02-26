@@ -29,7 +29,7 @@ export class MainForm extends Component {
     const { setUserInput } = this.props;
     const { value } = event.target;
 
-    setUserInput(value)
+    setUserInput(value);
     this.suggestIngredient(value);
   }
 
@@ -40,7 +40,6 @@ export class MainForm extends Component {
   }
 
   render() {
-
     return (
       <div className="form-container">
         <form>
@@ -110,6 +109,7 @@ MainForm.propTypes = {
     )
   ]),
 
-  setSuggestedIngredients: PropTypes.func.isRequired
-
+  setSuggestedIngredients: PropTypes.func.isRequired,
+  setUserInput: PropTypes.func.isRequired,
+  userInput: PropTypes.string
 };
