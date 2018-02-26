@@ -25,3 +25,8 @@ export const setPairings = pairingsObject => ({
 export const clearPairings = () => ({
   type: 'CLEAR_PAIRINGS'
 });
+
+export const setUserInput = userInput => ({
+  type: 'SET_USER_INPUT',
+  userInput
+});

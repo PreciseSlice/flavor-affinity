@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingCards matches snapshot 1`] = `
+<div
+  className="card-container"
+>
+  <div
+    className="loading-container"
+  >
+    <h1>
+      loading ingredients...
+    </h1>
+    <img
+      alt="swirling fruit"
+      src="fruit-swirl.gif"
+    />
+  </div>
+</div>
+`;
