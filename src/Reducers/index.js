@@ -44,11 +44,22 @@ export const setPairingsReducer = (state = {}, action) => {
   }
 };
 
+export const setUserInputReducer = (state='', action) => {
+  switch (action.type) {
+    case 'SET_USER_INPUT':
+    
+    return action.userInput
+  default:
+    return state 
+  }
+}
+
 const rootReducer = combineReducers({
   ingredients: allIngredientsReducer,
   suggestedIngredients: suggestedIngredientsReducer,
   selectedCards: selectedCardReducer,
-  pairingsObject: setPairingsReducer
+  pairingsObject: setPairingsReducer,
+  userInput: setUserInputReducer 
 });
 
 export default rootReducer;
