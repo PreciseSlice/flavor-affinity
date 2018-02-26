@@ -79,6 +79,6 @@ Card.propTypes = {
   ]),
 
   setSelectedCards: PropTypes.func.isRequired,
-
-  setPairings: PropTypes.func.isRequired
+  setPairings: PropTypes.func.isRequired,
+  selected: PropTypes.string
 };
