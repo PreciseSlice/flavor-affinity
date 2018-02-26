@@ -51,7 +51,7 @@ export class MainForm extends Component {
             name="userInput"
             type="text"
             onChange={event => this.handleChange(event)}
-            placeholder="enter ingredient"
+            placeholder="search"
             list="drop-down"
           />
 

@@ -10,7 +10,7 @@ describe('Header', () => {
   const mockFn = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<Header selectedCards={cleanData} />);
+    wrapper = shallow(<Header selectedCards={cleanData} clearSelectedCards={mockFn} clearPairings={mockFn} />);
   });
 
   it('matches snapshot', () => {

@@ -26,7 +26,7 @@ export const searchForIngredient = async ingredient => {
 
 export const getAllIngredients = async () => {
   const allIngredients = await fetchFromApi(
-    'https://api.foodpairing.com/ingredients/?limit=5'
+    'https://api.foodpairing.com/ingredients/?limit=500'
   );
 
   return cleanAllIngredients(allIngredients);
