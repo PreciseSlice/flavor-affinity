@@ -1,9 +1,11 @@
+import { AppId, AppKey } from './.apiKey.js';
+
 export const fetchFromApi = async url => {
   try {
     const initialFetch = await fetch(url, {
       headers: {
-        'X-Application-ID': '***REMOVED***',
-        'X-Application-Key': '***REMOVED***'
+        'X-Application-ID': AppId,
+        'X-Application-Key': AppKey
       }
     });
     if (initialFetch.status <= 200) {
