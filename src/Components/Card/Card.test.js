@@ -15,14 +15,15 @@ const cardData = {
 let mockFn;
 
 describe('Card', () => {
-  it('exist and matches snapshot', () => {
+  it('matches snapshot', () => {
     mockFn = jest.fn();
     const wrapper = shallow(
       <Card data={cardData} setSelectedCards={mockFn} setPairings={mockFn} />
     );
-    expect(wrapper).toBeDefined();
     expect(wrapper).toMatchSnapshot();
   });
+
+  // handle pairing test
 
   describe('MDTP', () => {
     it('should call the dispatch function when using a function from mapDispachToProps', () => {
