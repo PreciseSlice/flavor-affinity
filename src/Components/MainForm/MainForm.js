@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   setAllIngredients,
-  setSuggestedIngredients
+  setSuggestedIngredients,
+  setUserInput
 } from '../../Actions/index';
 import { PrefixTrie } from '@PreciseSlice/complete-me';
 import './MainForm.css';
@@ -13,10 +14,6 @@ export class MainForm extends Component {
     super(props);
 
     this.trie = new PrefixTrie();
-
-    this.state = {
-      userInput: ''
-    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,9 +26,10 @@ export class MainForm extends Component {
   }
 
   handleChange(event) {
-    const { name, value } = event.target;
+    const { setUserInput } = this.props;
+    const { value } = event.target;
 
-    this.setState({ [name]: value });
+    setUserInput(value)
     this.suggestIngredient(value);
   }
 
@@ -42,6 +40,7 @@ export class MainForm extends Component {
   }
 
   render() {
+
     return (
       <div className="form-container">
         <form>
@@ -50,6 +49,7 @@ export class MainForm extends Component {
             autoFocus
             name="userInput"
             type="text"
+            value={this.props.userInput}
             onChange={event => this.handleChange(event)}
             placeholder="search"
             list="drop-down"
@@ -70,13 +70,15 @@ export class MainForm extends Component {
 
 export const mapStateToProps = state => ({
   allIngredients: state.ingredients,
-  suggestedIngredients: state.suggestedIngredients
+  suggestedIngredients: state.suggestedIngredients,
+  userInput: state.userInput
 });
 
 export const mapDispatchToProps = dispatch => ({
   setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient)),
   setSuggestedIngredients: suggestedIngredients =>
-    dispatch(setSuggestedIngredients(suggestedIngredients))
+    dispatch(setSuggestedIngredients(suggestedIngredients)),
+  setUserInput: userInput => dispatch(setUserInput(userInput))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainForm);
