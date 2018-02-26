@@ -30,12 +30,21 @@ export const Card = ({
   };
 
   return (
-    <div className={"card " + selected}>
+    <div className={'card ' + selected}>
       <h1>{name}</h1>
       <img src={image} alt="ingredient" />
       <div>
-        <button onClick={() => handleSelect(data)}>select</button>
-        <button className="pairing-btn" onClick={() => handlePairing(id, name)}>
+        <button
+          title="select for multi-ingredient pairing"
+          onClick={() => handleSelect(data)}
+        >
+          select
+        </button>
+        <button
+          title="get this ingredient's pairings now"
+          className="pairing-btn"
+          onClick={() => handlePairing(id, name)}
+        >
           pairings
         </button>
       </div>
