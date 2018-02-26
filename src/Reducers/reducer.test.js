@@ -4,7 +4,8 @@ import rootReducer, {
   allIngredientsReducer,
   suggestedIngredientsReducer,
   selectedCardReducer,
-  setPairingsReducer
+  setPairingsReducer,
+  setUserInputReducer
 } from './index.js';
 
 describe('Reducers', () => {
@@ -133,6 +134,34 @@ describe('Reducers', () => {
       store.dispatch(setPairingsAction);
       expect(store.getState().setPairingsReducer).toEqual(
         setPairingsReducer([], setPairingsAction)
+      );
+    });
+  });
+
+  describe('setUserInputReducer', () => {
+    beforeEach(() => {
+      rootReducer = combineReducers({ setUserInputReducer });
+      store = createStore(rootReducer);
+      expectedStore = {
+        setUserInputReducer: ''
+      };
+    });
+    it('should have a default store which equals an empty string', () => {
+      expect(store.getState().setUserInputReducer).toEqual(
+        setUserInputReducer('', {})
+      );
+    });
+
+    it('setUserInputReducer should handle SET_USER_INPUT action type and update store', () => {
+      expect(store.getState()).toEqual(expectedStore);
+
+      const setUserInputAction = {
+        type: 'SET_USER_INPUT',
+        userInput: 'abc'
+      };
+      store.dispatch(setUserInputAction);
+      expect(store.getState().setUserInputReducer).toEqual(
+        setUserInputReducer([], setUserInputAction)
       );
     });
   });
