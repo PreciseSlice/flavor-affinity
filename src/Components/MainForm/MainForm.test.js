@@ -10,7 +10,13 @@ describe('MainForm', () => {
   const mockFn = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<MainForm suggestedIngredients={cleanData} setSuggestedIngredients={mockFn} />);
+    wrapper = shallow(
+      <MainForm
+        suggestedIngredients={cleanData}
+        setSuggestedIngredients={mockFn}
+        setUserInput={mockFn}
+      />
+    );
   });
 
   it('matches snapshot', () => {
@@ -25,6 +31,7 @@ describe('MainForm', () => {
         <MainForm
           suggestedIngredients={cleanData}
           setSuggestedIngredients={mockFn}
+          setUserInput={mockFn}
         />
       );
 
@@ -71,7 +78,9 @@ describe('MainForm', () => {
       const mapped = mapStateToProps(mockStore);
 
       expect(mapped.allIngredients).toEqual(mockStore.ingredients);
-      expect(mapped.suggestedIngredients).toEqual(mockStore.suggestedIngredients);
+      expect(mapped.suggestedIngredients).toEqual(
+        mockStore.suggestedIngredients
+      );
     });
   });
 
@@ -82,7 +91,7 @@ describe('MainForm', () => {
       //verify what is being returned from MDTP object
       // .toHaveBeenCalledWith(expectedParams)
       mapped.setAllIngredients();
-      mapped.setSuggestedIngredients()
+      mapped.setSuggestedIngredients();
 
       expect(mockDispatch).toHaveBeenCalledTimes(2);
     });
