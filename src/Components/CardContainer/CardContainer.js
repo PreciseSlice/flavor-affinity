@@ -118,5 +118,7 @@ CardContainer.propTypes = {
         selected: PropTypes.bool.isRequired
       })
     )
-  ])
+  ]),
+
+  userInput : PropTypes.string
 };
