@@ -71,4 +71,15 @@ describe('actions testing', () => {
       expect(actions.clearPairings()).toEqual(expected);
     });
   });
+
+  describe('setUserInput', () => {
+    const userInput = 'abc'
+    it('should return a type of SET_USER_INPUT', () => {
+      const expected = {
+        type: 'SET_USER_INPUT',
+        userInput
+      };
+      expect(actions.setUserInput(userInput)).toEqual(expected);
+    });
+  });
 });
