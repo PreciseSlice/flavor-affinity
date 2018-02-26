@@ -1,9 +1,11 @@
+import { AppId, AppKey } from './.apiKey.js';
+
 export const fetchFromApi = async url => {
   try {
     const initialFetch = await fetch(url, {
       headers: {
-        'X-Application-ID': '68b6cb64',
-        'X-Application-Key': 'e1a208ab044e736d99a53065b13fd850'
+        'X-Application-ID': AppId,
+        'X-Application-Key': AppKey
       }
     });
     if (initialFetch.status <= 200) {
