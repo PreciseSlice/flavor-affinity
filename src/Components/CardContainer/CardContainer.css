@@ -73,3 +73,14 @@
   justify-content: center;
   align-items: center;
   width: 100%; }
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .loading-container h1 {
+    margin-bottom: 30px; }
+  .loading-container img {
+    box-shadow: 0 0 5px 5px rgba(87, 87, 87, 0.6);
+    height: 400px; }

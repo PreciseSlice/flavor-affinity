@@ -4,6 +4,7 @@ import './CardContainer.css';
 import Card from '../Card/Card';
 import PropTypes from 'prop-types';
 import PairingContainer from '../PairingContainer/PairingContainer';
+import fruitSwirl from '../../Assets/fruit-swirl.gif';
 
 export class CardContainer extends Component {
   render() {
@@ -18,7 +19,16 @@ export class CardContainer extends Component {
       return suggestedIngredients.includes(ingredient.name);
     });
 
-    if (allIngredients && !filtered.length && !pairingsObject.topFive) {
+    if (!allIngredients.length) {
+      return (
+        <div className="card-container">
+          <div className="loading-container">
+            <h1>loading ingredients...</h1>
+            <img src={fruitSwirl} alt="swirling fruit" />
+          </div>
+        </div>
+      );
+    } else if (allIngredients && !filtered.length && !pairingsObject.topFive) {
       const cards = allIngredients.map(ingredient => {
         const selected = selectedCards.includes(ingredient) ? 'selected' : '';
 
@@ -30,7 +40,6 @@ export class CardContainer extends Component {
       return <div className="card-container">{cards}</div>;
     } else if (filtered.length) {
       const cards = filtered.map(ingredient => {
-        
         const selected = selectedCards.includes(ingredient) ? 'selected' : '';
         return (
           <Card data={ingredient} key={ingredient.id} selected={selected} />
