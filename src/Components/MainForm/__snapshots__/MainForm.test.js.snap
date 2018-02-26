@@ -11,7 +11,7 @@ exports[`MainForm matches snapshot 1`] = `
       list="drop-down"
       name="userInput"
       onChange={[Function]}
-      placeholder="enter ingredient"
+      placeholder="search"
       type="text"
     />
     <datalist

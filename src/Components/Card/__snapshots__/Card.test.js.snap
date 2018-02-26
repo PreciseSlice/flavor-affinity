@@ -14,12 +14,14 @@ exports[`Card exist and matches snapshot 1`] = `
   <div>
     <button
       onClick={[Function]}
+      title="select for multi-ingredient pairing"
     >
       select
     </button>
     <button
       className="pairing-btn"
       onClick={[Function]}
+      title="get this ingredient's pairings now"
     >
       pairings
     </button>

@@ -44,6 +44,15 @@ describe('actions testing', () => {
     });
   });
 
+  describe('clearSelectedCards', () => {
+    it('should return a type of CLEAR_SELECTED_CARDS', () => {
+      const expected = {
+        type: 'CLEAR_SELECTED_CARDS'
+      };
+      expect(actions.clearSelectedCards()).toEqual(expected);
+    });
+  });
+
   describe('setPairings', () => {
     it('should return a type of SET_SUGGESTED_INGREDIENTS with pairingsObject', () => {
       const expected = {
@@ -51,6 +60,15 @@ describe('actions testing', () => {
         pairingsObject
       };
       expect(actions.setPairings(pairingsObject)).toEqual(expected);
+    });
+  });
+
+  describe('clearPairings', () => {
+    it('should return a type of CLEAR_PAIRINGS', () => {
+      const expected = {
+        type: 'CLEAR_PAIRINGS'
+      };
+      expect(actions.clearPairings()).toEqual(expected);
     });
   });
 });

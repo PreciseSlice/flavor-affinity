@@ -2,7 +2,9 @@ input {
   height: 30px;
   width: 300px;
   border-radius: 30px;
-  outline: none; }
+  outline: none;
+  font-family: monospace;
+  font-size: 1.5em; }
 
 ::-webkit-input-placeholder {
   text-align: center; }
