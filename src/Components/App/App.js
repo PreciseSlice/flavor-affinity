@@ -4,9 +4,9 @@ import './App.css';
 import MainForm from '../MainForm/MainForm';
 import CardContainer from '../CardContainer/CardContainer';
 import { setAllIngredients } from '../../Actions';
-//import { getAllIngredients } from '../../Helpers/apiCalls';
+import { getAllIngredients } from '../../Helpers/apiCalls';
 //import { allDataClean } from '../../Helpers/.mockApi.js';
-import { cleanData } from '../App/testData';
+//import { cleanData } from '../App/testData';
 import { Switch, Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import Selected from '../Selected/Selected';
@@ -23,9 +23,9 @@ export class App extends Component {
 
   async componentDidMount() {
     const { setAllIngredients } = this.props;
-    //const allIngredients = await getAllIngredients();
-    //setAllIngredients(allIngredients);
-    setAllIngredients(cleanData);
+    const allIngredients = await getAllIngredients();
+    setAllIngredients(allIngredients);
+    //setAllIngredients(cleanData);
   }
 
   componentDidCatch(error, errorInfo) {
