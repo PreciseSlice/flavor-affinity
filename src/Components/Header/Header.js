@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 import { clearSelectedCards, clearPairings } from '../../Actions/index';
+import ReactTooltip from 'react-tooltip';
 
 export const Header = ({
   selectedCards,
@@ -12,10 +13,12 @@ export const Header = ({
 }) => {
   return (
     <div className="header-container">
+      <ReactTooltip />
       <h1>blend</h1>
+      <h2>serving inspiration daily</h2>
+      <h3>discover ingredient pairings instantly </h3>
       <div className="header-btn-container">
         <button
-          title="click to go home"
           onClick={() => {
             clearSelectedCards();
             clearPairings();
@@ -23,7 +26,7 @@ export const Header = ({
         >
           <NavLink to="/">home</NavLink>
         </button>
-        <button>
+        <button data-tip="compare selected ingredients">
           <NavLink to="/selected">ingredients: {selectedCards.length}</NavLink>
         </button>
         <button
