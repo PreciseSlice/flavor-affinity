@@ -24,17 +24,6 @@ describe('Card', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should map items in the store to props', () => {
-    const mockStore = {
-      state: {
-        selectedCards: cleanData
-      }
-    };
-    const mapped = mapStateToProps(mockStore);
-
-    expect(mapped.selectedCards).toEqual(mockStore.selectedCards);
-  });
-
   describe('MDTP', () => {
     it('should call the dispatch function when using a function from mapDispachToProps', () => {
       const mockDispatch = jest.fn();
