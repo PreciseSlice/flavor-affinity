@@ -1,7 +1,6 @@
 import React from 'react';
 import fruitSwirl from '../../Assets/fruit-swirl.gif';
 
-
 const LoadingCards = () => {
   return (
     <div className="card-container">
@@ -11,6 +10,6 @@ const LoadingCards = () => {
       </div>
     </div>
   );
-}
+};
 
 export default LoadingCards;
