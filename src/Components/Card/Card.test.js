@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Card } from './Card';
+import { Card, mapDispatchToProps, mapStateToProps } from './Card';
+import { cleanData } from '../App/testData';
 
 const cardData = {
   description:
@@ -11,10 +12,29 @@ const cardData = {
   name: '1724 Tonic'
 };
 
+let mockFn;
+
 describe('Card', () => {
-  it('exist and matches snapshot', () => {
-    const wrapper = shallow(<Card data={cardData} />);
-    expect(wrapper).toBeDefined();
+  it('matches snapshot', () => {
+    mockFn = jest.fn();
+    const wrapper = shallow(
+      <Card data={cardData} setSelectedCards={mockFn} setPairings={mockFn} />
+    );
     expect(wrapper).toMatchSnapshot();
   });
+
+  // handle pairing test
+
+  describe('MDTP', () => {
+    it('should call the dispatch function when using a function from mapDispachToProps', () => {
+      const mockDispatch = jest.fn();
+      const mapped = mapDispatchToProps(mockDispatch);
+
+      mapped.setSelectedCards(cleanData);
+      mapped.setPairings();
+
+      expect(mockDispatch).toHaveBeenCalledTimes(2);
+    });
+  })
+
 });

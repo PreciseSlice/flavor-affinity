@@ -5,9 +5,14 @@ import {
   fetchFromApi,
   searchForIngredient,
   getAllIngredients,
-  cleanAllIngredients
+  cleanAllIngredients,
+  getParings,
+  cleanPairings,
+  slicePairings
 } from './apiCalls';
 import { allIngredients, cleanData } from '../Components/App/testData';
+import { pairingsObject } from '../Actions/testingData';
+import { rawPairingData, cleanPairingData, slicedData } from './testingMockData';
 
 describe('apiCalls', () => {
   beforeEach(() => {
@@ -24,12 +29,15 @@ describe('apiCalls', () => {
     expect(searchForIngredient).toBeDefined();
     expect(getAllIngredients).toBeDefined();
     expect(cleanAllIngredients).toBeDefined();
+    expect(getParings).toBeDefined();
+    expect(cleanPairings).toBeDefined();
+    expect(slicePairings).toBeDefined();
   });
 
   describe('fetchFromApi', () => {
     it('calls fetch if status less than or equal to 200', () => {
       expect(window.fetch).not.toHaveBeenCalled();
-      fetchFromApi('url');
+      fetchFromApi('https://api.foodpairing.com/ingredients/');
       expect(window.fetch).toHaveBeenCalled();
     });
 
@@ -39,27 +47,25 @@ describe('apiCalls', () => {
           status: 500
         })
       );
-      expect(fetchFromApi('url')).rejects.toEqual(
-        Error('Error: Status code > 200')
-      );
+      expect(
+        fetchFromApi('https://api.foodpairing.com/ingredients/')
+      ).rejects.toEqual(Error('Error: Status code > 200'));
     });
   });
 
   describe('searchForingredient', () => {
     it('calls fetchFromApi to get data', () => {
       expect(window.fetch).not.toHaveBeenCalled();
-      searchForIngredient('url');
+      searchForIngredient();
       expect(window.fetch).toHaveBeenCalled();
     });
   });
-
-  //check to see that it is called with specific parameters
 
   describe('getAllIngredients', () => {
     it('calls fetchFromApi and clean all ingredients', () => {
       //const cleanAllIngredients = jest.fn()
       expect(window.fetch).not.toHaveBeenCalled();
-      getAllIngredients('url');
+      getAllIngredients();
       expect(window.fetch).toHaveBeenCalled();
       //expect(cleanAllIngredients).toHaveBeenCalled();
     });
@@ -70,6 +76,38 @@ describe('apiCalls', () => {
       const result = cleanAllIngredients(allIngredients);
 
       expect(result).toEqual(cleanData);
+    });
+  });
+
+  describe.skip('getPairings', () => {
+    it('calls fetchFromApi, cleanPairings and slicePairings', () => {
+      window.fetch = jest.fn().mockImplementation(url => {
+        return Promise.resolve({
+          status: 200,
+          json: () => Promise.resolve(pairingsObject)
+        });
+      });
+    });
+    expect(window.fetch).not.toHaveBeenCalled();
+    getParings(135, 'turnip');
+    expect(window.fetch).toHaveBeenCalled();
+    //expect(cleanPairings).toHaveBeenCalled();
+    //expect(slicePairings).toHaveBeenCalled();
+  });
+
+  describe('cleanPairings', () => {
+    it('filters the array of objects passed to it', () => {
+      const result = cleanPairings(rawPairingData);
+
+      expect(result).toEqual(cleanPairingData);
+    });
+  });
+
+  describe('slicePairings', () => {
+    it('slices allPairings into 3 arrays of 5 and returns the name of the ingredient', () => {
+      const result = slicePairings(cleanPairingData, 'green pepper')
+
+      expect(result).toEqual(slicedData)
     });
   });
 });

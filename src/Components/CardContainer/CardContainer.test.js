@@ -25,11 +25,15 @@ describe('CardContainer', () => {
   it('should map items in the store to props', () => {
     const mockStore = {
       state: {
-        ingredients: cleanData
+        ingredients: cleanData,
+        suggestedIngredients: cleanData,
+        pairingsObject: {}
       }
     };
     const mapped = mapStateToProps(mockStore);
 
-    expect(mapped.allIngredients).toEqual(mockStore.allIngredients);
+    expect(mapped.allIngredients).toEqual(mockStore.ingredients);
+    expect(mapped.suggestedIngredients).toEqual(mockStore.suggestedIngredients);
+    expect(mapped.pairingsObject).toEqual(mockStore.pairingsObject);
   });
 });

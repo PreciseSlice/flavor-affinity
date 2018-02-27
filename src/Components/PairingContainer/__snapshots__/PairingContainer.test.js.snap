@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainForm matches snapshot 1`] = `
+<div
+  className="card-container"
+>
+  <h1>
+    Pairings for: 
+    green pepper
+  </h1>
+  <div
+    className="pairing-container"
+  >
+    <div
+      className="five-container"
+    >
+      <div
+        className="star-container"
+      >
+        <img
+          alt="star"
+          src="star.svg"
+        />
+        <img
+          alt="star"
+          src="star.svg"
+        />
+        <img
+          alt="star"
+          src="star.svg"
+        />
+      </div>
+      <Connect(Component)
+        data={
+          Object {
+            "id": 4290,
+            "image": "https://pantry.foodpairing.com/apps/515_240_0",
+            "name": "bacon (fried)",
+          }
+        }
+        key="4290"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 1518,
+            "image": "https://pantry.foodpairing.com/apps/704_240_0",
+            "name": "dark chocolate",
+          }
+        }
+        key="1518"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 56,
+            "image": "https://pantry.foodpairing.com/apps/790_240_0",
+            "name": "honey",
+          }
+        }
+        key="56"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 939,
+            "image": "https://pantry.foodpairing.com/apps/1115_240_0",
+            "name": "black tea",
+          }
+        }
+        key="939"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 1104,
+            "image": "https://pantry.foodpairing.com/apps/592_240_0",
+            "name": "cake",
+          }
+        }
+        key="1104"
+      />
+    </div>
+    <div
+      className="five-container"
+    >
+      <div
+        className="star-container"
+      >
+        <img
+          alt="star"
+          src="star.svg"
+        />
+        <img
+          alt="star"
+          src="star.svg"
+        />
+      </div>
+      <Connect(Component)
+        data={
+          Object {
+            "id": 1113,
+            "image": "https://pantry.foodpairing.com/apps/4133_240_0",
+            "name": "gingerbread",
+          }
+        }
+        key="1113"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 1739,
+            "image": "https://pantry.foodpairing.com/apps/19_240_0",
+            "name": "emmental",
+          }
+        }
+        key="1739"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 4675,
+            "image": "https://pantry.foodpairing.com/apps/741_240_0",
+            "name": "foie gras of duck (baked)",
+          }
+        }
+        key="4675"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 3501,
+            "image": "https://pantry.foodpairing.com/apps/1041_240_0",
+            "name": "san daniele ham",
+          }
+        }
+        key="3501"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 4814,
+            "image": "https://pantry.foodpairing.com/apps/822_240_0",
+            "name": "kohlrabi (baked)",
+          }
+        }
+        key="4814"
+      />
+    </div>
+    <div
+      className="five-container"
+    >
+      <div
+        className="star-container"
+      >
+        <img
+          alt="star"
+          src="star.svg"
+        />
+      </div>
+      <Connect(Component)
+        data={
+          Object {
+            "id": 4515,
+            "image": "https://pantry.foodpairing.com/apps/4187_240_0",
+            "name": "chestnut (roasted)",
+          }
+        }
+        key="4515"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 5093,
+            "image": "https://pantry.foodpairing.com/apps/986_240_0",
+            "name": "pork loin (fried)",
+          }
+        }
+        key="5093"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 5835,
+            "image": "https://pantry.foodpairing.com/apps/4380_240_0",
+            "name": "quinoa (cooked)",
+          }
+        }
+        key="5835"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 62,
+            "image": "https://pantry.foodpairing.com/apps/1459_240_0",
+            "name": "angostura bitters®",
+          }
+        }
+        key="62"
+      />
+      <Connect(Component)
+        data={
+          Object {
+            "id": 1405,
+            "image": "https://pantry.foodpairing.com/apps/376_240_0",
+            "name": "olive oil 'family reserve' arbequina",
+          }
+        }
+        key="1405"
+      />
+    </div>
+  </div>
+</div>
+`;

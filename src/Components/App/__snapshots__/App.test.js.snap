@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Exist and matches snapshot 1`] = `
+exports[`App matches snapshot 1`] = `
 <Switch>
   <Route
     exact={true}
