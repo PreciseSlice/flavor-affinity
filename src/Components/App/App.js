@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import './App.css';
 import MainForm from '../MainForm/MainForm';
 import CardContainer from '../CardContainer/CardContainer';
-//import { getAllIngredients } from '../../Helpers/apiCalls';
 import { setAllIngredients } from '../../Actions';
-//import * as actions from '../../Actions';
+//import { getAllIngredients } from '../../Helpers/apiCalls';
 import { allDataClean } from '../../Helpers/.mockApi.js';
 //import { cleanData } from '../App/testData';
+import { Switch, Route } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import Selected from '../Selected/Selected';
+import Header from '../Header/Header';
 
 export class App extends Component {
   constructor(props) {
@@ -52,20 +55,34 @@ export class App extends Component {
       );
     }
     return (
-      <div className="app">
-        <MainForm />
-        <CardContainer />
-      </div>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div className="app">
+              <Header />
+              <MainForm />
+              <CardContainer />
+            </div>
+          )}
+        />
+        <Route
+          path="/selected"
+          render={() => (
+            <div className="app">
+              <Header />
+              <Selected />
+            </div>
+          )}
+        />
+      </Switch>
     );
   }
 }
-
-// export const mapStateToProps = state => ({
-
-// });
 
 export const mapDispatchToProps = dispatch => ({
   setAllIngredients: ingredient => dispatch(setAllIngredients(ingredient))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));

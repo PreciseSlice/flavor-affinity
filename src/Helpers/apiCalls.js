@@ -1,4 +1,4 @@
-import { AppId, AppKey } from './.apiKey.js';
+import { AppId, AppKey} from './.apiKey.js';
 
 export const fetchFromApi = async url => {
   try {
@@ -28,9 +28,8 @@ export const searchForIngredient = async ingredient => {
 
 export const getAllIngredients = async () => {
   const allIngredients = await fetchFromApi(
-    'https://api.foodpairing.com/ingredients/?limit=5'
+    'https://api.foodpairing.com/ingredients/?limit=500'
   );
-  //console.log(allIngredients);
 
   return cleanAllIngredients(allIngredients);
 };
@@ -39,9 +38,43 @@ export const cleanAllIngredients = ingredientsData => {
   return ingredientsData.map(ingredient => {
     return {
       id: ingredient.id,
-      name: ingredient.name,
+      name: ingredient.name.toLowerCase(),
       image: ingredient._links.image.size_240,
-      description: ingredient.description
+      description: ingredient.description,
+      selected: false
     };
   });
+};
+
+export const getParings = async (id, name) => {
+  const pairings = await fetchFromApi(
+    `https://api.foodpairing.com/ingredients/${id}/pairings`
+  );
+
+  const allPairings = cleanPairings(pairings);
+
+  return slicePairings(allPairings, name);
+};
+
+export const cleanPairings = ingredientsData => {
+  return ingredientsData.map(ingredient => {
+    return {
+      id: ingredient._links.ingredient.id,
+      name: ingredient._links.ingredient.name.toLowerCase(),
+      image: ingredient._links.ingredient._links.image.size_240
+    };
+  });
+};
+
+export const slicePairings = (allPairings, name) => {
+  const topFive = allPairings.slice(0, 5);
+  const middleFive = allPairings.slice(5, 10);
+  const finalFive = allPairings.slice(10, 15);
+
+  return {
+    name,
+    topFive,
+    middleFive,
+    finalFive
+  };
 };

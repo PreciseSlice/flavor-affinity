@@ -1,16 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card exist and matches snapshot 1`] = `
+exports[`Card matches snapshot 1`] = `
 <div
-  className="card"
+  className="card undefined"
 >
   <h1>
     1724 Tonic
   </h1>
   <img
-    alt="#"
+    alt="ingredient"
     src="https://pantry.foodpairing.com/apps/4578_240_0"
   />
+  <div>
+    <button
+      onClick={[Function]}
+      title="select for multi-ingredient pairing"
+    >
+      select
+    </button>
+    <button
+      className="pairing-btn"
+      onClick={[Function]}
+      title="get this ingredient's pairings now"
+    >
+      pairings
+    </button>
+  </div>
   <div
     className="discription-container"
   >

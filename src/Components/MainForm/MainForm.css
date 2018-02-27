@@ -2,7 +2,9 @@ input {
   height: 30px;
   width: 300px;
   border-radius: 30px;
-  outline: none; }
+  outline: none;
+  font-family: monospace;
+  font-size: 1.5em; }
 
 ::-webkit-input-placeholder {
   text-align: center; }
@@ -18,9 +20,5 @@ input {
 :-ms-input-placeholder {
   text-align: center; }
 
-button {
-  border-radius: 30px;
-  height: 33px;
-  width: 90px;
-  margin-left: 10px;
-  outline: none; }
+.form-container {
+  margin-top: 30px; }
