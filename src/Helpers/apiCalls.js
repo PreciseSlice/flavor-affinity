@@ -1,22 +1,23 @@
 import { AppId, AppKey } from './.apiKey.js';
 
 export const fetchFromApi = async url => {
-  try {
     const initialFetch = await fetch(url, {
       headers: {
         'X-Application-ID': AppId,
         'X-Application-Key': AppKey
       }
     });
-    if (initialFetch.status <= 200) {
-      return await initialFetch.json();
-    } else {
-      throw new Error('Status code > 200');
-    }
-  } catch (error) {
-    throw new Error(error);
-  }
+
+  return await validateResponce(initialFetch)
 };
+
+export const validateResponce = initialFetch => {
+  if (initialFetch.status <= 200) {
+    return initialFetch.json();
+  } else {
+    throw new Error('Status code > 200');
+  }
+}
 
 export const searchForIngredient = async ingredient => {
   const searchResult = await fetchFromApi(
