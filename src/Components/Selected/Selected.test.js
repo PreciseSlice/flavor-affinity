@@ -16,7 +16,7 @@ describe('MainForm', () => {
   beforeEach(() => {
     wrapper = shallow(
       <Selected
-        selectedCards={cleanData}
+        ingredients={cleanData}
         pairingsObject={pairingsObject}
         setPairings={mockFn}
       />
