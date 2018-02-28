@@ -9,12 +9,16 @@ import PairingContainer from '../PairingContainer/PairingContainer';
 
 export class Selected extends Component {
   render() {
-    const { selectedCards, setPairings, pairingsObject } = this.props;
+    const { ingredients, setPairings, pairingsObject } = this.props;
 
     const handlePairing = async (id, name) => {
       const pairings = await getParings(id, name);
       setPairings(pairings);
     };
+
+    const selectedCards = ingredients.filter(
+      ingredients => ingredients.selected === true
+    );
 
     if (selectedCards && !pairingsObject.topFive) {
       const cards = selectedCards.map(ingredient => {
@@ -46,8 +50,8 @@ export class Selected extends Component {
 }
 
 export const mapStateToProps = state => ({
-  selectedCards: state.selectedCards,
-  pairingsObject: state.pairingsObject
+  pairingsObject: state.pairingsObject,
+  ingredients: state.ingredients
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -57,7 +61,7 @@ export const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(Selected);
 
 Selected.propTypes = {
-  selectedCards: PropTypes.oneOfType([
+  ingredients: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.arrayOf(
       PropTypes.shape({
