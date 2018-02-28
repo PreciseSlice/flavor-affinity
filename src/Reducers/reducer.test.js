@@ -82,34 +82,6 @@ describe('Reducers', () => {
     });
   });
 
-  describe('selectedCardReducer', () => {
-    beforeEach(() => {
-      rootReducer = combineReducers({ selectedCardReducer });
-      store = createStore(rootReducer);
-      expectedStore = {
-        selectedCardReducer: []
-      };
-    });
-    it('should have a default store which equals an empty array', () => {
-      expect(store.getState().selectedCardReducer).toEqual(
-        selectedCardReducer([], {})
-      );
-    });
-
-    it('selectedCardReducer should handle SET_SELECTED_CARD action type and update store', () => {
-      expect(store.getState()).toEqual(expectedStore);
-
-      const selectedCardsAction = {
-        type: 'SET_SELECTED_CARD',
-        selectedCards: mockData
-      };
-      store.dispatch(selectedCardsAction);
-      expect(store.getState().selectedCardReducer).toEqual(
-        selectedCardReducer([], selectedCardsAction)
-      );
-    });
-  });
-
   describe('setPairingsReducer', () => {
     beforeEach(() => {
       rootReducer = combineReducers({ setPairingsReducer });
