@@ -49,7 +49,7 @@ describe('apiCalls', () => {
       );
       expect(
         fetchFromApi('https://api.foodpairing.com/ingredients/')
-      ).rejects.toEqual(Error('Error: Status code > 200'));
+      ).rejects.toEqual(Error('Status code > 200'));
     });
   });
 

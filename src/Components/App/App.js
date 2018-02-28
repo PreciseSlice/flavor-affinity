@@ -5,8 +5,8 @@ import MainForm from '../MainForm/MainForm';
 import CardContainer from '../CardContainer/CardContainer';
 import { setAllIngredients } from '../../Actions';
 //import { getAllIngredients } from '../../Helpers/apiCalls';
-import { allDataClean } from '../../Helpers/.mockApi.js';
-//import { cleanData } from '../App/testData';
+//import { allDataClean } from '../../Helpers/.mockApi.js';
+import { cleanData } from '../App/testData';
 import { Switch, Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import Selected from '../Selected/Selected';
@@ -25,7 +25,7 @@ export class App extends Component {
     const { setAllIngredients } = this.props;
     //const allIngredients = await getAllIngredients();
     //setAllIngredients(allIngredients);
-    setAllIngredients(allDataClean);
+    setAllIngredients(cleanData);
   }
 
   componentDidCatch(error, errorInfo) {
@@ -45,7 +45,7 @@ export class App extends Component {
   render() {
     if (this.state.error) {
       return (
-        <div className="eror">
+        <div className="error">
           <h2>{'Oh-no! Something went wrong'}</h2>
           <p className="">{this.state.error && this.state.error.toString()}</p>
           <div>{'Component Stack Error Details: '}</div>

@@ -5,7 +5,6 @@ import rootReducer from '../Reducers/index';
 import {
   ingredients,
   suggestedIngredients,
-  selectedCards,
   pairingsObject
 } from './testingData';
 
@@ -31,16 +30,6 @@ describe('actions testing', () => {
       expect(actions.setSuggestedIngredients(suggestedIngredients)).toEqual(
         expected
       );
-    });
-  });
-
-  describe('setSelectCards', () => {
-    it('should return a type of SET_SELECTED_CARD with selectedCards', () => {
-      const expected = {
-        type: 'SET_SELECTED_CARD',
-        selectedCards
-      };
-      expect(actions.setSelectedCards(selectedCards)).toEqual(expected);
     });
   });
 

@@ -5,6 +5,7 @@ import Card from '../Card/Card';
 import PropTypes from 'prop-types';
 import PairingContainer from '../PairingContainer/PairingContainer';
 import LoadingCards from '../LoadingCards/LoadingCards';
+import Cards from '../Cards/Cards';
 
 export class CardContainer extends Component {
   render() {
@@ -12,7 +13,6 @@ export class CardContainer extends Component {
       allIngredients,
       suggestedIngredients,
       pairingsObject,
-      selectedCards,
       userInput
     } = this.props;
 
@@ -22,6 +22,10 @@ export class CardContainer extends Component {
 
     const exactMatch = allIngredients.find(
       ingredient => ingredient.name === userInput
+    );
+
+    const selectedCards = allIngredients.filter(
+      ingredients => ingredients.selected === true
     );
 
     const isLoading = !allIngredients.length;
@@ -41,23 +45,21 @@ export class CardContainer extends Component {
       return <PairingContainer />;
     }
 
-    // this could become a component
     if (exactMatch) {
-      const selected = selectedCards.includes(exactMatch) ? 'selected' : '';
+      const selectedStyling = selectedCards.includes(exactMatch)
+        ? 'selected'
+        : '';
       return (
         <div className="card-container">
-          <Card data={exactMatch} selected={selected} />
+          <Card data={exactMatch} selectedStyling={selectedStyling} />
         </div>
       );
     }
-
-    // this could become a component
-    const cards = ingredients.map(ingredient => {
-      const selected = selectedCards.includes(ingredient) ? 'selected' : '';
-      return <Card data={ingredient} key={ingredient.id} selected={selected} />;
-    });
-
-    return <div className="card-container">{cards}</div>;
+    return (
+      <div className="card-container">
+        <Cards ingredients={ingredients} allIngredients={allIngredients} />
+      </div>
+    );
   }
 }
 
@@ -65,7 +67,6 @@ export const mapStateToProps = state => ({
   allIngredients: state.ingredients,
   suggestedIngredients: state.suggestedIngredients,
   pairingsObject: state.pairingsObject,
-  selectedCards: state.selectedCards,
   userInput: state.userInput
 });
 
@@ -120,5 +121,5 @@ CardContainer.propTypes = {
     )
   ]),
 
-  userInput : PropTypes.string
+  userInput: PropTypes.string
 };

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './Card.css';
-import { setSelectedCards, setPairings } from '../../Actions/index';
+import { setPairings, selectCard } from '../../Actions/index';
 import { getParings } from '../../Helpers/apiCalls';
 
-export const Card = ({ data, setSelectedCards, setPairings, selected }) => {
+export const Card = ({ data, selectCard, setPairings, selectedStyling }) => {
   const { name, image, description, id } = data;
 
   const handlePairing = async (id, name) => {
@@ -14,13 +14,13 @@ export const Card = ({ data, setSelectedCards, setPairings, selected }) => {
   };
 
   return (
-    <div className={'card ' + selected}>
+    <div className={'card ' + selectedStyling}>
       <h1>{name}</h1>
       <img src={image} alt="ingredient" />
       <div>
         <button
           title="select for multi-ingredient pairing"
-          onClick={() => setSelectedCards(data)}
+          onClick={() => selectCard(id)}
         >
           select
         </button>
@@ -40,8 +40,8 @@ export const Card = ({ data, setSelectedCards, setPairings, selected }) => {
 };
 
 export const mapDispatchToProps = dispatch => ({
-  setSelectedCards: selectedCards => dispatch(setSelectedCards(selectedCards)),
-  setPairings: pairingsObject => dispatch(setPairings(pairingsObject))
+  setPairings: pairingsObject => dispatch(setPairings(pairingsObject)),
+  selectCard: id => dispatch(selectCard(id))
 });
 
 export default connect(null, mapDispatchToProps)(Card);
@@ -54,7 +54,7 @@ Card.propTypes = {
     name: PropTypes.string.isRequired
   }).isRequired,
 
-  setSelectedCards: PropTypes.func.isRequired,
+  selectCard: PropTypes.func.isRequired,
   setPairings: PropTypes.func.isRequired,
-  selected: PropTypes.string
+  selectedStyling: PropTypes.string
 };
