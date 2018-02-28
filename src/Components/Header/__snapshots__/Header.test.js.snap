@@ -41,7 +41,7 @@ exports[`Header matches snapshot 1`] = `
         to="/selected"
       >
         ingredients: 
-        3
+        0
       </NavLink>
     </button>
     <button
