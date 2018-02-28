@@ -7,10 +7,15 @@ import { clearSelectedCards, clearPairings } from '../../Actions/index';
 import ReactTooltip from 'react-tooltip';
 
 export const Header = ({
-  selectedCards,
+  ingredients,
   clearSelectedCards,
   clearPairings
 }) => {
+
+  const selectedCards = ingredients.filter(
+    ingredients => ingredients.selected === true
+  );
+
   return (
     <div className="header-container">
       <ReactTooltip />
@@ -49,7 +54,7 @@ export const Header = ({
 };
 
 export const mapStateToProps = state => ({
-  selectedCards: state.selectedCards
+  ingredients: state.ingredients
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -60,7 +65,7 @@ export const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 Header.propTypes = {
-  selectedCards: PropTypes.oneOfType([
+  ingredients: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.arrayOf(
       PropTypes.shape({
