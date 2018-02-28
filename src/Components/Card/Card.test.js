@@ -18,7 +18,7 @@ describe('Card', () => {
   it('matches snapshot', () => {
     mockFn = jest.fn();
     const wrapper = shallow(
-      <Card data={cardData} setSelectedCards={mockFn} setPairings={mockFn} />
+      <Card data={cardData} selectCard={mockFn} setPairings={mockFn} />
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -27,10 +27,11 @@ describe('Card', () => {
 
   describe('MDTP', () => {
     it('should call the dispatch function when using a function from mapDispachToProps', () => {
+      const id = 123;
       const mockDispatch = jest.fn();
       const mapped = mapDispatchToProps(mockDispatch);
 
-      mapped.setSelectedCards(cleanData);
+      mapped.selectCard(id);
       mapped.setPairings();
 
       expect(mockDispatch).toHaveBeenCalledTimes(2);
