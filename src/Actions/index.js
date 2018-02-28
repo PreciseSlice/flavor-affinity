@@ -3,18 +3,18 @@ export const setAllIngredients = ingredients => ({
   ingredients
 });
 
-export const setSuggestedIngredients = suggestedIngredients => ({
-  type: 'SET_SUGGESTED_INGREDIENTS',
-  suggestedIngredients
-});
-
-export const setSelectedCards = selectedCards => ({
-  type: 'SET_SELECTED_CARD',
-  selectedCards
+export const selectCard = id => ({
+  type: 'SELECT_CARD',
+  id
 });
 
 export const clearSelectedCards = () => ({
   type: 'CLEAR_SELECTED_CARDS'
+});
+
+export const setSuggestedIngredients = suggestedIngredients => ({
+  type: 'SET_SUGGESTED_INGREDIENTS',
+  suggestedIngredients
 });
 
 export const setPairings = pairingsObject => ({
