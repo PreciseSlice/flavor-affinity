@@ -15,9 +15,6 @@ exports[`Header matches snapshot 1`] = `
   <h2>
     serving inspiration daily
   </h2>
-  <h3>
-    discover ingredient pairings instantly 
-  </h3>
   <div
     className="header-btn-container"
   >
