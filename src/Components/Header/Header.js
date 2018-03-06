@@ -6,12 +6,7 @@ import './Header.css';
 import { clearSelectedCards, clearPairings } from '../../Actions/index';
 import ReactTooltip from 'react-tooltip';
 
-export const Header = ({
-  ingredients,
-  clearSelectedCards,
-  clearPairings
-}) => {
-
+export const Header = ({ ingredients, clearSelectedCards, clearPairings }) => {
   const selectedCards = ingredients.filter(
     ingredients => ingredients.selected === true
   );
@@ -21,7 +16,6 @@ export const Header = ({
       <ReactTooltip />
       <h1>blend</h1>
       <h2>serving inspiration daily</h2>
-      <h3>discover ingredient pairings instantly </h3>
       <div className="header-btn-container">
         <button
           onClick={() => {
