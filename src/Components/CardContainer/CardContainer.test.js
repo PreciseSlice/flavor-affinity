@@ -10,7 +10,7 @@ describe('CardContainer', () => {
     topFive: []
   }
 
-  it('exist and matches snapshot', () => {
+  it('matches snapshot', () => {
     const wrapper = shallow(
       <CardContainer
         allIngredients={cleanData}
@@ -18,7 +18,6 @@ describe('CardContainer', () => {
         pairingsObject={pairingsObject}
       />
     );
-    expect(wrapper).toBeDefined();
     expect(wrapper).toMatchSnapshot();
   });
 
